@@ -1,0 +1,25 @@
+[debug] [2022-05-10T07:36:34.270Z] ----------------------------------------------------------------------
+[debug] [2022-05-10T07:36:34.272Z] Command:       /usr/local/bin/node /usr/local/bin/firebase login:ci --no-localhost
+[debug] [2022-05-10T07:36:34.272Z] CLI Version:   10.8.0
+[debug] [2022-05-10T07:36:34.272Z] Platform:      linux
+[debug] [2022-05-10T07:36:34.272Z] Node Version:  v16.14.2
+[debug] [2022-05-10T07:36:34.272Z] Time:          Tue May 10 2022 09:36:34 GMT+0200 (Central European Summer Time)
+[debug] [2022-05-10T07:36:34.273Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-10T07:36:34.319Z] >>> [apiv2][query] POST https://auth.firebase.tools/attest [none]
+[debug] [2022-05-10T07:36:34.319Z] >>> [apiv2][body] POST https://auth.firebase.tools/attest {"session_id":"07616987-0a9c-49de-b27b-56849e4f0bc6"}
+[debug] [2022-05-10T07:36:34.678Z] <<< [apiv2][status] POST https://auth.firebase.tools/attest 200
+[debug] [2022-05-10T07:36:34.679Z] <<< [apiv2][body] POST https://auth.firebase.tools/attest {"token":"p6QozVSPBNZNoRiFF45VI65M1sEcDZ0vurTWlipM_AA"}
+[info] 
+[info] To sign in to the Firebase CLI:
+[info] 
+[info] 1. Take note of your session ID:
+[info] 
+[info]    07616
+[info] 
+[info] 2. Visit the URL below on any device and follow the instructions to get your code:
+[info] 
+[info]    https://auth.firebase.tools/login?code_challenge=16l3YZNYZGbu1a0wT2oogEJ9ydZQtrKApoFxq9JK8to&session=07616987-0a9c-49de-b27b-56849e4f0bc6&attest=p6QozVSPBNZNoRiFF45VI65M1sEcDZ0vurTWlipM_AA
+[info] 
+[info] 3. Paste or enter the authorization code below once you have it:
+[info] 
