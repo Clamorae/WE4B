@@ -8,6 +8,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { EtablissementComponent } from './etablissement/etablissement.component';
+import { ListeEtablissementsComponent } from './liste-etablissements/liste-etablissements.component';
 
 // 2. Add your credentials from step 1
 const config = {
@@ -22,7 +24,9 @@ const config = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EtablissementComponent,
+    ListeEtablissementsComponent
   ],
   imports: [
     BrowserModule,

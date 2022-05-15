@@ -1,0 +1,15 @@
+<div class="card mb-3 text-center" style=" background-color: #d5c0a4; border-width: 0ch;">
+    <img src={{etablissement.img}} class="img-fluid rounded-start" alt={{etablissement.nom}}>
+    <div class="card-body">
+      <h5 class="card-title">{{etablissement.nom}}</h5> <!--//TODO - transformer en href quand on saura faire des requêtes ajax-->
+      <h6 class="card-subtitle mb-2 text-muted">{{etablissement.prix}}</h6>
+      <p class="card-text">{{etablissement.adresse}}</p>
+      <p class="card-text">{{etablissement.codePostal}}</p>
+      <p class="card-text">{{etablissement.ville}}</p>
+      <p class="card-text">{{etablissement.pays}}</p>
+      <p class="card-text">Téléphone: {{etablissement.tel}}</p>
+      <p class="card-text">Email: {{etablissement.mail}}</p>
+      <p></p>
+      <p class="card-text">{{etablissement.description}}</p>
+    </div>
+  </div>

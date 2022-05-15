@@ -1,0 +1,14 @@
+#mainContainer{
+    background-color: #d5c0a4;
+    margin: 0 ;
+    padding: 1em 0;
+}
+
+li{
+    background-color: inherit;
+}
+
+h2{
+    text-align: center;
+    margin: 1em 0;
+}
