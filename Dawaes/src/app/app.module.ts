@@ -12,6 +12,11 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { EtablissementComponent } from './etablissement/etablissement.component';
 import { ListeEtablissementsComponent } from './liste-etablissements/liste-etablissements.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { OneWeekCalendarComponent } from './one-week-calendar/one-week-calendar.component';
+
 // 2. Add your credentials from step 1
 const config = {
   apiKey: "AIzaSyBS_X69-V4hMK7M_vwJLqM9S4879goeazk",
@@ -27,7 +32,8 @@ const config = {
   declarations: [
     AppComponent,
     EtablissementComponent,
-    ListeEtablissementsComponent
+    ListeEtablissementsComponent,
+    OneWeekCalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,12 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [
     ObtainEtablissementListService
