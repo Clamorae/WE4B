@@ -9,6 +9,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
+import { doc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
+import { ButtonComponent } from './button/button.component'
+
 // 2. Add your credentials from step 1
 const config = {
   apiKey: "AIzaSyBS_X69-V4hMK7M_vwJLqM9S4879goeazk",
@@ -20,9 +23,26 @@ const config = {
   measurementId: "G-3FM27BFWZB"
 };
 
+const firestore = getFirestore();
+const userInfo = doc(firestore,'User/newUser')
+
+/*async function testFirebase() {
+  const newUser = {
+    nom : 'test',
+    prenom : 'test'
+  };
+  try {
+    await setDoc(userInfo,newUser,{merge:true})
+    console.log("worked")
+  } catch (error) {
+    console.log(`${error}`)
+  }
+}*/
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
