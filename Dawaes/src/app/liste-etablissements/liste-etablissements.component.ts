@@ -1,3 +1,4 @@
+import { ObtainEtablissementListService } from './../obtain-etablissement-list.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Etablissement } from '../class/Etablissment';
 
@@ -11,13 +12,13 @@ export class ListeEtablissementsComponent implements OnInit {
   @Input() titre?: string
   etablissements : Etablissement[] = []
 
-  constructor() { }
+  constructor(service:ObtainEtablissementListService) {
+    this.etablissements=service.getData();
+   }
 
   ngOnInit(): void {
 
-    //TODO - fetch la bdd ici plutôt que d'instancier en hard coded
-    this.etablissements.push(new Etablissement("test1","test1","test1","test1","test1","test1","test1","test1","test1","test1"))
-    this.etablissements.push(new Etablissement("test2","test2","test2","test2","test2","test2","test2","test2","test2","test2"))
+    
   }
 
 }

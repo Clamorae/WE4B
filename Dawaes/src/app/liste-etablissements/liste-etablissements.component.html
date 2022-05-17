@@ -1,9 +1,6 @@
 <div id="mainContainer">
-  <!---//TODO - tester si l'absence de titre peut poser des problèmes de mise en page-->
-  <h2>{{this.titre}}</h2>
+  <h2 *ngIf="this.titre != undefined" [ngClass]="['center']">{{this.titre}}</h2>
   <ul class="list-group list-group-flush">
-      <!---//TODO - faire une loop for quand on saura comment faire-->
-      <li class="list-group-item"><app-etablissement  [etablissement]="etablissements[0]"></app-etablissement></li>
-      <li class="list-group-item"><app-etablissement  [etablissement]="etablissements[1]"></app-etablissement></li>
-    </ul>
+      <li class="list-group-item"><app-etablissement *ngFor="let etablissementVar of etablissements"  [etablissement]="etablissementVar"></app-etablissement></li>
+  </ul>
 </div>

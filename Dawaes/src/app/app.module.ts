@@ -1,3 +1,4 @@
+import { ObtainEtablissementListService } from './obtain-etablissement-list.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -36,7 +37,9 @@ const config = {
     AngularFireAuthModule, // auth
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [
+    ObtainEtablissementListService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
