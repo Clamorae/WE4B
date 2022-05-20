@@ -10,7 +10,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { doc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
-import { ButtonComponent } from './button/button.component'
+import { LogzoneComponent } from './logzone/logzone.component'
 
 // 2. Add your credentials from step 1
 const config = {
@@ -42,7 +42,7 @@ const userInfo = doc(firestore,'User/newUser')
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent
+    LogzoneComponent
   ],
   imports: [
     BrowserModule,
