@@ -10,7 +10,7 @@ import { FirebaseService } from './services/firebase.service';
 
 export class AppComponent implements OnInit{
   title = 'Dawaes';
-  isSignedIn=false;
+  isSignedIn = false;
   constructor(public firebaseService : FirebaseService){}
   ngOnInit(){
     if(localStorage.getItem('user')!==null){
@@ -36,6 +36,5 @@ export class AppComponent implements OnInit{
 
   handleLogout(){
     this.isSignedIn=false;
-
   }
 }
