@@ -10,9 +10,9 @@ import { FirebaseService } from './services/firebase.service';
 
 export class AppComponent implements OnInit{
   title = 'Dawaes';
-  isSignedIn = false;
+  isSignedIn : boolean = false;
   constructor(public firebaseService : FirebaseService){}
-  ngOnInit(){
+  ngOnInit(): void{
     if(localStorage.getItem('user')!==null){
       this.isSignedIn = true;
     }else{
@@ -20,21 +20,21 @@ export class AppComponent implements OnInit{
     }
   }
 
-  async onSignUp(email:string, password:string){
+  async onSignUp(email:string, password:string): Promise<void>{
     await  this.firebaseService.signUp(email,password);
     if(this.firebaseService.isLoggedIn){
       this.isSignedIn= true;
     }
   }
 
-  async onSignIn(email:string, password:string){
+  async onSignIn(email:string, password:string): Promise<void>{
     await  this.firebaseService.signUp(email,password);
     if(this.firebaseService.isLoggedIn){
       this.isSignedIn= true;
     }
   }
 
-  handleLogout(){
+  handleLogout(): void{
     this.isSignedIn=false;
   }
 }
