@@ -1,5 +1,5 @@
 
-<div class="row text-center">
+<div class="row text-center" [ngClass]="['bg']">
 
     <div class="col-md-4">
         <div class="btn-group" [ngClass]="['navButton']">
@@ -17,5 +17,5 @@
 
 </div>
 
-<mwl-calendar-week-view [viewDate]="viewDate">
+<mwl-calendar-week-view [viewDate]="viewDate" [ngClass]="['bg']" [events]="events">
 </mwl-calendar-week-view>
