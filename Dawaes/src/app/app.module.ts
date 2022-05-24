@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { doc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
 import { LogzoneComponent } from './logzone/logzone.component'
+import { initializeApp } from 'firebase/app';
 
 // 2. Add your credentials from step 1
 const config = {
@@ -22,6 +23,8 @@ const config = {
   appId: "1:554798796231:web:25654deee6f6b7e5b0dde2",
   measurementId: "G-3FM27BFWZB"
 };
+
+const app = initializeApp(config)
 
 const firestore = getFirestore();
 const userInfo = doc(firestore,'User/newUser')
