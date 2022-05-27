@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { OneWeekCalendarComponent } from './one-week-calendar/one-week-calendar.component';
+import { ListeCommentairesComponent } from './liste-commentaires/liste-commentaires.component';
+import { ProfileEtablissementComponent } from './profile-etablissement/profile-etablissement.component';
 
 // 2. Add your credentials from step 1
 const config = {
@@ -33,7 +35,9 @@ const config = {
     AppComponent,
     EtablissementComponent,
     ListeEtablissementsComponent,
-    OneWeekCalendarComponent
+    OneWeekCalendarComponent,
+    ListeCommentairesComponent,
+    ProfileEtablissementComponent
   ],
   imports: [
     BrowserModule,
