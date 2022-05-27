@@ -1,6 +1,7 @@
+import { CalendarEventsService } from './../calendar-events.service';
 import { Component, OnInit } from '@angular/core';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
-import { startOfDay } from 'date-fns';
+import { addDays, startOfDay } from 'date-fns';
 
 @Component({
   selector: 'app-one-week-calendar',
@@ -12,14 +13,11 @@ export class OneWeekCalendarComponent implements OnInit {
   viewDate: Date = new Date();
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
-  events: CalendarEvent[] = [
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-    }
-  ]
+  events: CalendarEvent[] = []
 
-  constructor() { }
+  constructor(service:CalendarEventsService) {
+    this.events = service.getData()
+   }
 
   ngOnInit(): void {
   }
