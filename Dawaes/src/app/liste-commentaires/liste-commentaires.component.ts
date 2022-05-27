@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ObtainCommentairesService } from './../obtain-commentaires.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-liste-commentaires',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeCommentairesComponent implements OnInit {
 
-  constructor() { }
+  commentaires:string[]=[]
+
+  //est lié soit à un utilisateur soit à un établissement:
+  @Input() estUtilisateur!:boolean
+  @Input() id!:number
+
+  constructor(private service:ObtainCommentairesService) {
+    
+   }
 
   ngOnInit(): void {
+    if(this.estUtilisateur){
+      this.commentaires = this.service.getCommentairesUtilisateur(this.id)
+    } else {
+      this.commentaires = this.service.getCommentairesEtablissement(this.id)
+    }
   }
 
 }

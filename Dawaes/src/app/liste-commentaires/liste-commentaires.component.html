@@ -1,1 +1,4 @@
-<p>liste-commentaires works!</p>
+
+<ul class="list-group list-group-flush" [ngClass]="['bg']">
+    <li class="list-group-item" *ngFor="let commVar of commentaires" [ngClass]="['bg']">{{commVar}}</li>
+  </ul>
