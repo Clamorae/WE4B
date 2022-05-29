@@ -1,8 +1,15 @@
 <div [ngClass]="['bg']">
-    <app-liste-commentaires [estUtilisateur]=true [id]=3 ></app-liste-commentaires>
-    <app-profile-etablissement></app-profile-etablissement>
-    <app-liste-commentaires></app-liste-commentaires>
-    <app-one-week-calendar></app-one-week-calendar>
-    <app-liste-etablissements titre="Etablissements populaires"></app-liste-etablissements>
-    <app-liste-etablissements></app-liste-etablissements>
+    <h1>Dawaes</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <a class="nav-link" [routerLink]="'/search'">recherche</a>
+                <router-outlet></router-outlet>
+            </div>
+
+            <div class="col-sm-4">
+                <app-liste-etablissements titre="Etablissements populaires"></app-liste-etablissements>
+            </div>
+        </div>
+    </div>
 </div>

@@ -18,6 +18,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { OneWeekCalendarComponent } from './one-week-calendar/one-week-calendar.component';
 import { ListeCommentairesComponent } from './liste-commentaires/liste-commentaires.component';
 import { ProfileEtablissementComponent } from './profile-etablissement/profile-etablissement.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { ProfileUtilisateurComponent } from './profile-utilisateur/profile-utilisateur.component';
 
 // 2. Add your credentials from step 1
 const config = {
@@ -37,7 +39,9 @@ const config = {
     ListeEtablissementsComponent,
     OneWeekCalendarComponent,
     ListeCommentairesComponent,
-    ProfileEtablissementComponent
+    ProfileEtablissementComponent,
+    LoginFormComponent,
+    ProfileUtilisateurComponent
   ],
   imports: [
     BrowserModule,
