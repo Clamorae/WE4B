@@ -1,0 +1,11 @@
+
+<div class="input-group mb-3">
+    <input type="text" class="form-control" aria-label="Text input with dropdown button" [ngClass]="['bg']" placeholder="rechercher...">
+    <select class="form-select" id="inputGroupSelect01" [ngClass]="['bg']">
+        <option selected>Nom</option>
+        <option value="1">Ville</option>
+        <option value="2">Pays</option>
+        <option value="3">Prix</option>
+    </select>
+    <button type="button" class="btn" [routerLink]="'/search'" [ngClass]="['crimsonButton']">recherche</button>
+  </div>

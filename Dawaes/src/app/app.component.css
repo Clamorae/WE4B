@@ -10,3 +10,7 @@ h1{
 .container{
     width:95%;
 }
+
+.crimsonButton{
+    background-color: crimson;
+}

@@ -21,6 +21,7 @@ import { ProfileEtablissementComponent } from './profile-etablissement/profile-e
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProfileUtilisateurComponent } from './profile-utilisateur/profile-utilisateur.component';
 import { CreateAccountFormComponent } from './create-account-form/create-account-form.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 // 2. Add your credentials from step 1
 const config = {
@@ -43,7 +44,8 @@ const config = {
     ProfileEtablissementComponent,
     LoginFormComponent,
     ProfileUtilisateurComponent,
-    CreateAccountFormComponent
+    CreateAccountFormComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
