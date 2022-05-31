@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileUtilisateurComponent implements OnInit {
 
-  constructor() { }
+  login:boolean
+
+  constructor() {
+    this.login=true
+   }
 
   ngOnInit(): void {
   }

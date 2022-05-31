@@ -20,6 +20,7 @@ import { ListeCommentairesComponent } from './liste-commentaires/liste-commentai
 import { ProfileEtablissementComponent } from './profile-etablissement/profile-etablissement.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProfileUtilisateurComponent } from './profile-utilisateur/profile-utilisateur.component';
+import { CreateAccountFormComponent } from './create-account-form/create-account-form.component';
 
 // 2. Add your credentials from step 1
 const config = {
@@ -41,7 +42,8 @@ const config = {
     ListeCommentairesComponent,
     ProfileEtablissementComponent,
     LoginFormComponent,
-    ProfileUtilisateurComponent
+    ProfileUtilisateurComponent,
+    CreateAccountFormComponent
   ],
   imports: [
     BrowserModule,

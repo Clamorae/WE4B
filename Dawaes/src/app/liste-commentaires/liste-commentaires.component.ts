@@ -9,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ListeCommentairesComponent implements OnInit {
 
   commentaires:string[]=[]
+  @Input() titre?: string
 
   //est lié soit à un utilisateur soit à un établissement:
   @Input() estUtilisateur!:boolean
