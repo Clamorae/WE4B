@@ -1,3 +1,8 @@
 .bg{
     background-color: #d5c0a4;
 }
+
+a{
+    text-decoration: none;
+    color: crimson;
+}
