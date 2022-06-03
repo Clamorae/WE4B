@@ -1,0 +1,21 @@
+
+<div class="row text-center" [ngClass]="['bg']">
+
+    <div class="col-md-4">
+        <div class="btn-group" [ngClass]="['navButton']">
+            <div class="btn" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+                Previous
+            </div>
+            <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate" [ngClass]="['todayButton']">
+                Today
+            </div>
+            <div class="btn" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" [ngClass]="['navButton']">
+                Next
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<mwl-calendar-week-view [viewDate]="viewDate" [ngClass]="['bg']" [events]="events">
+</mwl-calendar-week-view>

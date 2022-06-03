@@ -1,0 +1,16 @@
+.bg{
+    background-color: antiquewhite;
+}
+
+h1{
+    color: crimson;
+    text-align: center;
+}
+
+.container{
+    width:95%;
+}
+
+.crimsonButton{
+    background-color: crimson;
+}

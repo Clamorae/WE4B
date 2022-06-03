@@ -67,4 +67,5 @@ export class AppComponent implements OnInit{
   }
 
 
+  viewDate: Date = new Date();
 }

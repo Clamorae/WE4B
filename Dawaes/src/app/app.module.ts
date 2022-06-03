@@ -15,7 +15,18 @@ import { ListeEtablissementsComponent } from './liste-etablissements/liste-etabl
 import {getFirestore} from 'firebase/firestore';
 import { LogzoneComponent } from './logzone/logzone.component'
 import { initializeApp } from 'firebase/app';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { OneWeekCalendarComponent } from './one-week-calendar/one-week-calendar.component';
+import { ListeCommentairesComponent } from './liste-commentaires/liste-commentaires.component';
+import { ProfileEtablissementComponent } from './profile-etablissement/profile-etablissement.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { ProfileUtilisateurComponent } from './profile-utilisateur/profile-utilisateur.component';
+import { CreateAccountFormComponent } from './create-account-form/create-account-form.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
+// 2. Add your credentials from step 1
 const config = {
   apiKey: "AIzaSyBS_X69-V4hMK7M_vwJLqM9S4879goeazk",
   authDomain: "dawaes-cf2cf.firebaseapp.com",
@@ -34,15 +45,27 @@ const db = getFirestore(app);
     AppComponent,
     EtablissementComponent,
     ListeEtablissementsComponent,
-    LogzoneComponent
-  ], 
+    LogzoneComponent, 
+    OneWeekCalendarComponent,
+    ListeCommentairesComponent,
+    ProfileEtablissementComponent,
+    LoginFormComponent,
+    ProfileUtilisateurComponent,
+    CreateAccountFormComponent,
+    SearchBarComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [
     ObtainEtablissementListService,

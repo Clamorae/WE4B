@@ -1,0 +1,9 @@
+<div *ngIf="this.login == true;else elseBlock">
+    <button type="button" class="btn" [ngClass]="['crimsonButton']">Déconnexion</button>
+    <app-liste-etablissements titre="Etablissements aimés"></app-liste-etablissements>
+    <br>
+    <app-liste-commentaires titre="Vos commentaires"></app-liste-commentaires>
+    <br>
+    <app-one-week-calendar></app-one-week-calendar>
+</div>
+<ng-template #elseBlock><app-create-account-form></app-create-account-form></ng-template>

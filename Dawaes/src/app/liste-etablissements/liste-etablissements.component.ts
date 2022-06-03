@@ -18,7 +18,6 @@ export class ListeEtablissementsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
   }
 
 }

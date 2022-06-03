@@ -1,0 +1,14 @@
+.todayButton{
+    background-color: crimson;
+    color: black;
+}
+
+.navButton{
+    background-color: antiquewhite;
+    color: darkred;
+}
+
+.bg{
+    background-color: antiquewhite;
+    margin:0 .5em 0 .5em;
+}
