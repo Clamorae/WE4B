@@ -9,11 +9,10 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
-import { doc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
+import {getFirestore} from 'firebase/firestore';
 import { LogzoneComponent } from './logzone/logzone.component'
 import { initializeApp } from 'firebase/app';
 
-// 2. Add your credentials from step 1
 const config = {
   apiKey: "AIzaSyBS_X69-V4hMK7M_vwJLqM9S4879goeazk",
   authDomain: "dawaes-cf2cf.firebaseapp.com",
@@ -25,28 +24,13 @@ const config = {
 };
 
 const app = initializeApp(config)
-
-const firestore = getFirestore();
-const userInfo = doc(firestore,'User/newUser')
-
-/*async function testFirebase() {
-  const newUser = {
-    nom : 'test',
-    prenom : 'test'
-  };
-  try {
-    await setDoc(userInfo,newUser,{merge:true})
-    console.log("worked")
-  } catch (error) {
-    console.log(`${error}`)
-  }
-}*/
+const db = getFirestore(app);
 
 @NgModule({
   declarations: [
     AppComponent,
     LogzoneComponent
-  ],
+  ], 
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,7 +39,7 @@ const userInfo = doc(firestore,'User/newUser')
     AngularFireAuthModule, // auth
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [{ provide: 'A', useValue: db}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

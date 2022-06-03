@@ -1,2 +1,8 @@
 <p>you ar logged In</p>
 <button (click)="logout()">Log Out</button>
+<div>
+    <h2>add in bdd</h2>
+    <input type="text" #title/>
+    <input type="text" #content/>
+    <button (click) = "addItem(title.value,content.value)">add in bdd</button>
+</div>

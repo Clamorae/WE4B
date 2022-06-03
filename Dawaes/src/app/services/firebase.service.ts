@@ -6,7 +6,7 @@ import { isThursday } from 'date-fns';
   providedIn: 'root'
 })
 export class FirebaseService {
-
+  
   isLoggedIn = false
   constructor(public firebaseAuth: AngularFireAuth) { }
   async signIn(email:string, password : string){
