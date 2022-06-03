@@ -12,7 +12,10 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { EtablissementComponent } from './etablissement/etablissement.component';
 import { ListeEtablissementsComponent } from './liste-etablissements/liste-etablissements.component';
 
-// 2. Add your credentials from step 1
+import {getFirestore} from 'firebase/firestore';
+import { LogzoneComponent } from './logzone/logzone.component'
+import { initializeApp } from 'firebase/app';
+
 const config = {
   apiKey: "AIzaSyBS_X69-V4hMK7M_vwJLqM9S4879goeazk",
   authDomain: "dawaes-cf2cf.firebaseapp.com",
@@ -23,12 +26,16 @@ const config = {
   measurementId: "G-3FM27BFWZB"
 };
 
+const app = initializeApp(config)
+const db = getFirestore(app);
+
 @NgModule({
   declarations: [
     AppComponent,
     EtablissementComponent,
-    ListeEtablissementsComponent
-  ],
+    ListeEtablissementsComponent,
+    LogzoneComponent
+  ], 
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,8 +45,8 @@ const config = {
     AngularFireStorageModule
   ],
   providers: [
-    ObtainEtablissementListService
-  ],
+    ObtainEtablissementListService,
+    { provide: 'A', useValue: db}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
