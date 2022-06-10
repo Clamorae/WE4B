@@ -13,7 +13,7 @@ export class ProfileEtablissementComponent implements OnInit {
   login:boolean
 
   constructor(service: ObtainEtablissementService) {
-    //TODO - give a real id or name here and check login
+    //TODO - check le login, récupérer l'id via routage
     this.etablissement = service.getData(1)
     this.login=true
    }

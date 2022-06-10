@@ -9,6 +9,8 @@ export class ObtainCommentairesService {
 
   constructor() { }
 
+  //TODO - créer ces deux fonctions et update leur appel dans profil-établissment et -utilisateur
+  //TODO - décider de laisser ces fonctions dans ce service ou de les bouger dans les sergices de profils
   getCommentairesUtilisateur(id:number):string[]{
     this.toReturn = []
 
@@ -20,7 +22,6 @@ export class ObtainCommentairesService {
 
   getCommentairesEtablissement(id:number):string[]{
     this.toReturn = []
-    //TODO - fetch la bdd ici plutôt que d'instancier en hard coded
     this.toReturn.push("Commentaire 3")
     this.toReturn.push("Commentaire 4")
 

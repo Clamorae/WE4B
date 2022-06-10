@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-utilisateur.component.css']
 })
 export class ProfileUtilisateurComponent implements OnInit {
+  //TODO - check le login, récupérer l'id via routage
 
   login:boolean
 
