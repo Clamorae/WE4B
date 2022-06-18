@@ -12,7 +12,7 @@ export class CalendarEventsService {
   getData():CalendarEvent[]{
 
     this.toReturn = []
-    //TODO - fetch la bdd ici plutôt que d'instancier en hard coded
+    // TODO - fetch la bdd ici plutôt que d'instancier en hard coded
     this.toReturn = [
       {
         start: startOfDay(new Date()),

@@ -9,8 +9,8 @@ export class ObtainCommentairesService {
 
   constructor() { }
 
-  //TODO - créer ces deux fonctions et update leur appel dans profil-établissment et -utilisateur
-  //TODO - décider de laisser ces fonctions dans ce service ou de les bouger dans les sergices de profils
+  // TODO - créer ces deux fonctions et update leur appel dans profil-établissment et -utilisateur
+  // TODO - décider de laisser ces fonctions dans ce service ou de les bouger dans les sergices de profils
   getCommentairesUtilisateur(id:number):string[]{
     this.toReturn = []
 

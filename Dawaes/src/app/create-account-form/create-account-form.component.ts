@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-create-account-form',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateAccountFormComponent implements OnInit {
 
-  constructor() { }
+  @Output() isLogout = new EventEmitter<void>()
+  constructor(public firebaseService:FirebaseService, private injector: Injector) {
+    const db = this.injector.get('A');
+  }
 
   ngOnInit(): void {
   }
+
+  async onSignIn(email:string, password:string): Promise<void>{
+    await  this.firebaseService.signUp(email,password);
+    if(this.firebaseService.isLoggedIn){
+      console.log("connected");
+    }
+  }
+
 
 }
