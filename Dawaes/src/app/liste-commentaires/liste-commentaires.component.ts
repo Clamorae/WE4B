@@ -24,11 +24,6 @@ export class ListeCommentairesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*if(this.estUtilisateur){
-      this.commentaires = this.service.getCommentairesUtilisateur(this.id)
-    } else {
-      this.commentaires = this.service.getCommentairesEtablissement(this.id)
-    }*/
     const auth = getAuth()
     const user = auth.currentUser;
     const q = query(collection(this.injector.get('A'), "Comment"), where("Etablissement", "==", "TODO"));

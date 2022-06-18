@@ -21,7 +21,7 @@ export class ProfileEtablissementComponent implements OnInit {
     this.etablissement = service.getData(1)
     this.login=true
     const db = this.injector.get('A');
-   }
+  }
 
   ngOnInit(): void {
   }

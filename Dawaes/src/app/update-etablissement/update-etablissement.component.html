@@ -1,0 +1,16 @@
+<form>
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom de l'etablissement</label>
+      <input type="nom" class="form-control" id="nom" aria-describedby="nom" #nom>
+    </div>
+    <div class="mb-3">
+      <label for="localisation" class="form-label">Localisation</label>
+      <input type="localisation" class="form-control" id="localisation" #localisation>
+    </div>
+    <div class="mb-3">
+        <label for="type" class="form-label">type d'etablissement</label>
+        <input type="type" class="form-control" id="type" #type>
+    </div>
+    <button type="submit" class="btn btn-primary" [routerLink]="'/utilisateur'" (click) = "updateInstitution(nom.value,localisation.value,type.value)">Submit</button>
+    <a class="nav-link" [routerLink]="'/newaccount'">Pas de compte?</a>
+  </form>
