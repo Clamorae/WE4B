@@ -3,7 +3,7 @@ import { FirebaseApp, initializeApp } from '@angular/fire/app';
 import { FirebaseService } from '../services/firebase.service';
 import { collection, addDoc } from "firebase/firestore"; 
 import { Injector } from '@angular/core';
- 
+
 
 @Component({
   selector: 'app-logzone',

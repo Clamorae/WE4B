@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { getAuth, signOut } from 'firebase/auth';
 
 @Component({
   selector: 'app-profile-utilisateur',
@@ -16,5 +17,15 @@ export class ProfileUtilisateurComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  signOut():void{
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      console.log("signed out")
+    }).catch((error) => {
+      console.log("not signed out")
+});
+  }
+  
 
 }

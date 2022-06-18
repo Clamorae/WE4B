@@ -21,7 +21,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   async onSignUp(email:string, password:string): Promise<void>{
-    await  this.firebaseService.signUp(email,password);
+    await  this.firebaseService.signIn(email,password);
     if(this.firebaseService.isLoggedIn){
       console.log("connected");
     }
