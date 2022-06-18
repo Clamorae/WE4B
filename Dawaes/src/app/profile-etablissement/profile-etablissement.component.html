@@ -1,5 +1,5 @@
 <div class="container" [ngClass]="['bg']">
-    <button *ngIf="this.login == true" type="button" class="btn" [ngClass]="['crimsonButton']">Editer</button>
+    <button *ngIf="this.login == true" type="button" class="btn" [ngClass]="['crimsonButton']">Editer</button> <!-- add/ modify etablsisement-->
     <app-etablissement [etablissement]="this.etablissement"></app-etablissement>
     <br>
     <app-one-week-calendar></app-one-week-calendar>
@@ -12,7 +12,7 @@
         <div class="input-group mb-3">
             <label class="form-label">Ajouter un commentaire: </label>
             <input type="text" class="form-control" placeholder="Votre commentaire" aria-label="Recipient's username" aria-describedby="button-addon2" [ngClass]="['input']">
-            <button class="btn" type="button" id="button-addon2" [ngClass]="['crimsonButton']">Ajouter le commentaire</button>
+            <button class="btn" type="button" id="button-addon2" [ngClass]="['crimsonButton']">Ajouter le commentaire</button> <!-- add comment-->
         </div>
 
     </form>

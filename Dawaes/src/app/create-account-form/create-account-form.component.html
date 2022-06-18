@@ -12,5 +12,7 @@
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
-    <button type="submit" class="btn btn-primary" [routerLink]="'/utilisateur'" (click)="onSignIn(email.value,password.value)">Submit</button>
+    <button type="submit" class="btn btn-primary" [routerLink]="'/utilisateur'" (click)="onSignIn(email.value,password.value)">Submit</button><br>
+    <button (click) = "onGoogle()">S'inscrire avec google</button> 
+    <!-- ANCHOR a rendre beau-->
 </form>
