@@ -23,13 +23,11 @@ export class EtablissementComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    //TODO - initialiser les variables avec la bdd ou les passer en input
     this.estAime=true
     this.login=true
   }
 
   change(){
-    //TODO - update la bdd ici
     this.estAime=!this.estAime
   }
 
