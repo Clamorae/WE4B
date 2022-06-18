@@ -38,21 +38,35 @@ export class EtablissementComponent implements OnInit {
       const likeCollection= collection(this.injector.get('A'), "like");
       const auth = getAuth()
       const user = auth.currentUser;
-      const q = query(likeCollection, where("User", "==", "mail@mail.mail"), where("Etablissement", "==", "TODO"));
+      const q = query(likeCollection, where("User", "==", user?.email), where("Etablissement", "==", "TODO"));
       const querySnapshot = await getDocs(q);
+      let isModified : boolean = false;
       querySnapshot.forEach((doc) => {
         const data = doc.data();
         if(data['isLiked']==true) {
           updateDoc(doc.ref,{
             isLiked: false
           });
+          isModified = true
         }else if(data['isLiked']==false) {
           updateDoc(doc.ref,{
             isLiked: true
           });
+          isModified = true
         }
         this.change();
       });
+
+      if(isModified == false){
+        if (user !== null) {
+          const docRef = await addDoc(collection(this.injector.get('A'), "like"), {
+            isLiked: true,
+            User: user.email,
+            Etablissement: "TODO"
+          });
+        console.log("Document written with ID: ", docRef.id);
+        }
+      }
     } catch (e) {
       console.error("Error adding document: ", e);
     }
