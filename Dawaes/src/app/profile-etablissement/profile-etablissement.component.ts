@@ -43,5 +43,6 @@ export class ProfileEtablissementComponent implements OnInit {
       console.error("Error adding document: ", e);
     }
   }
+  
 
 }
