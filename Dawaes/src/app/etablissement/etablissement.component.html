@@ -1,7 +1,14 @@
 <div class="card mb-3 text-center" style=" border-width: 0ch;" [ngClass]="['bg']">
     <img src={{etablissement.img}} class="img-fluid rounded-start" alt={{etablissement.nom}}>
     <div class="card-body">
-      <a class="card-title" [routerLink]="'/etablissement'"><h5>{{etablissement.nom}}</h5></a> <!--//TODO - transformer en href quand on saura faire des requêtes ajax-->
+      <a class="card-title" [routerLink]="'/etablissement'"><h5>{{etablissement.nom}}</h5></a>
+
+      <div *ngIf="login">
+        <button [ngClass]="['like']" class="btn" (click)="change()" *ngIf="estAime;else elseBlock"><img src="../../assets/red_heart.png" alt="unlike" width="50" height="50"><p>Ne plus aimer</p></button>
+        <ng-template #elseBlock > <button [ngClass]="['like']" class="btn" (click)="change()" ><img src="../../assets/heart_black.png" alt="like" width="50" height="50"><p>Aimer</p></button></ng-template>
+        <p></p>
+     </div>
+
       <h6 class="card-subtitle mb-2 text-muted">{{etablissement.prix}}</h6>
       <p class="card-text">{{etablissement.adresse}}</p>
       <p class="card-text">{{etablissement.codePostal}}</p>
