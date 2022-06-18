@@ -10,11 +10,20 @@ export class EtablissementComponent implements OnInit {
 
   @Input() etablissement!:Etablissement //< établissement contenu dans le composant
   //attributs supplémentaires:
-  @Input() estAimé?:boolean
+  estAime!:boolean
+  login!:boolean
 
   constructor() { }
 
   ngOnInit(): void {
+    //TODO - initialiser les variables avec la bdd ou les passer en input
+    this.estAime=true
+    this.login=true
+  }
+
+  change(){
+    //TODO - update la bdd ici
+    this.estAime=!this.estAime
   }
 
 }
