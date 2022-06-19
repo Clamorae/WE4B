@@ -10,7 +10,8 @@
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      <label class="form-check-label" for="exampleCheck1">Je suis chef d'établissement</label>
+      <!--ANCHOR - faire une variable pour les chefs d'établissement-->
     </div>
     <button type="submit" class="btn" [routerLink]="'/utilisateur'" (click)="onSignIn(email.value,password.value)" [ngClass]="['redButton']">Submit</button><br>
     <button (click) = "onGoogle()" [ngClass]="['login-with-google-btn']">S'inscrire avec google</button> 
