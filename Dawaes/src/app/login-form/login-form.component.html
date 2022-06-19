@@ -1,19 +1,18 @@
 <form>
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <label for="exampleInputEmail1" class="form-label">Adresse email</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #email>
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <div id="emailHelp" class="form-text">Votre adresse mail ne sera jamais partagée avec personne.</div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
     <input type="password" class="form-control" id="exampleInputPassword1" #password>
   </div>
   <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Stay connected</label>
+    <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
   </div>
-  <button type="submit" class="btn btn-primary" [routerLink]="'/utilisateur'" (click) = "onSignUp(email.value,password.value)">Submit</button>
+  <button type="submit" class="btn" [routerLink]="'/utilisateur'" (click) = "onSignUp(email.value,password.value)" [ngClass]="['redButton']">Envoyer</button>
   <a class="nav-link" [routerLink]="'/newaccount'">Pas de compte?</a>
-  <button (click) = "onGoogle()">Se connecter avec google</button>
-  <!-- ANCHOR a rendre beau-->
+  <button (click) = "onGoogle()" [ngClass]="['login-with-google-btn']">Se connecter avec google</button>
 </form>

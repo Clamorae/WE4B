@@ -1,18 +1,17 @@
 <form>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <label for="exampleInputEmail1" class="form-label">Adresse email</label>
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #email>
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <div id="emailHelp" class="form-text">Votre adresse mail ne sera jamais partagée avec personne.</div>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
       <input type="password" class="form-control" id="exampleInputPassword1" #password>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
-    <button type="submit" class="btn btn-primary" [routerLink]="'/utilisateur'" (click)="onSignIn(email.value,password.value)">Submit</button><br>
-    <button (click) = "onGoogle()">S'inscrire avec google</button> 
-    <!-- ANCHOR a rendre beau-->
+    <button type="submit" class="btn" [routerLink]="'/utilisateur'" (click)="onSignIn(email.value,password.value)" [ngClass]="['redButton']">Submit</button><br>
+    <button (click) = "onGoogle()" [ngClass]="['login-with-google-btn']">S'inscrire avec google</button> 
 </form>
