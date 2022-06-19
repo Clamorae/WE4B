@@ -20,7 +20,6 @@ export class ProfileEtablissementComponent implements OnInit {
     //TODO - check le login, récupérer l'id via routage
     this.etablissement = service.getData(1)
     this.login=true
-    const db = this.injector.get('A');
   }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 <div class="container" [ngClass]="['bg']">
-    <button *ngIf="this.login == true" type="button" class="btn" [ngClass]="['crimsonButton']" >Editer</button> <!-- TODO add/ modify etablsisement-->
+    <button *ngIf="this.login == true" type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="'/update'">Editer</button> <!-- TODO add/ modify etablsisement-->
     <app-etablissement [etablissement]="this.etablissement"></app-etablissement>
     <br>
     <app-one-week-calendar></app-one-week-calendar>

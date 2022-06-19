@@ -18,8 +18,9 @@ export class UpdateEtablissementComponent implements OnInit {
   ngOnInit(): void { 
   }
 
-  async updateInstitution(nom:string, localisation:string, type:string){
+  async updateInstitution(nom:string, localisation:string, type:string, tel:string, description:string){
     try {
+      //ANCHOR image
       const likeCollection= collection(this.injector.get('A'), "Institution");
       const q = query(likeCollection, where("Nom", "==", "TODO"));
       const querySnapshot = await getDocs(q);
@@ -28,7 +29,9 @@ export class UpdateEtablissementComponent implements OnInit {
         const docRef = await addDoc(collection(this.injector.get('A'), "Institution"), {
           Nom:nom,
           Localisation: localisation,
-          tipe : type 
+          tipe : type, 
+          Phone:tel,
+          Description:description
         });
       }else{
         querySnapshot.forEach((doc) => {
@@ -39,18 +42,6 @@ export class UpdateEtablissementComponent implements OnInit {
           });
         });
       }
-      
-      /*const auth = getAuth()
-      const user = auth.currentUser;
-      if (user !== null) {
-        const docRef = await addDoc(collection(this.injector.get('A'), "Comment"), {
-          text: comment,
-          User: user.email,
-          Etablissement: "TODO"
-          //ANCHOR maybe add rating
-        });
-      console.log("Document written with ID: ", docRef.id);
-      }*/
     } catch (e) {
       console.error("Error adding document: ", e);
     }

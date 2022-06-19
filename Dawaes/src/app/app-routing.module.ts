@@ -5,13 +5,15 @@ import { ProfileEtablissementComponent } from './profile-etablissement/profile-e
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UpdateEtablissementComponent } from './update-etablissement/update-etablissement.component';
 
 const routes: Routes = [
   {path:'', component: LoginFormComponent},
   {path:'newaccount', component: CreateAccountFormComponent},
   {path:'etablissement', component: ProfileEtablissementComponent},
   {path:'search',component:ListeEtablissementsComponent},
-  {path:'utilisateur',component:ProfileUtilisateurComponent}
+  {path:'utilisateur',component:ProfileUtilisateurComponent},
+  {path: 'update', component:UpdateEtablissementComponent}
 ];
 
 @NgModule({
