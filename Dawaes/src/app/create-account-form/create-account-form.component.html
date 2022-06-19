@@ -1,18 +1,21 @@
-<form>
+<form [formGroup]="myForm">
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Adresse email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #email>
+      <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #email>
       <div id="emailHelp" class="form-text">Votre adresse mail ne sera jamais partagée avec personne.</div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" #password>
+      <input formControlName="mdp" type="password" class="form-control" id="exampleInputPassword1" #password>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Je suis chef d'établissement</label>
       <!--ANCHOR - faire une variable pour les chefs d'établissement-->
     </div>
-    <button type="submit" class="btn" [routerLink]="'/utilisateur'" (click)="onSignIn(email.value,password.value)" [ngClass]="['redButton']">Submit</button><br>
+    <div *ngIf="!myForm.valid" [ngClass]="['warning']">
+      Formulaire invalide! Merci de rentrer une adresse email valide et un mot de passe d'au moins 8 caractères!
+    </div>
+    <button type="submit" class="btn" [routerLink]="'/utilisateur'" (click)="onSignIn(email.value,password.value)" [ngClass]="['redButton']" [disabled]='!myForm.valid'>Envoyer</button><br>
     <button (click) = "onGoogle()" [ngClass]="['login-with-google-btn']">S'inscrire avec google</button> 
 </form>

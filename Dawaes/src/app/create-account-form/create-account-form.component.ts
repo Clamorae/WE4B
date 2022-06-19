@@ -2,12 +2,18 @@ import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { FirebaseService } from '../services/firebase.service';
 
+import { FormControl, FormGroup,Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-create-account-form',
   templateUrl: './create-account-form.component.html',
   styleUrls: ['./create-account-form.component.css']
 })
 export class CreateAccountFormComponent implements OnInit {
+  myForm = new FormGroup({
+    mdp: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    email: new FormControl('', [Validators.required, Validators.email])
+    });
 
   @Output() isLogout = new EventEmitter<void>()
   constructor(public firebaseService:FirebaseService, private injector: Injector) {
