@@ -21,8 +21,10 @@ export class UpdateEtablissementComponent implements OnInit {
   async updateInstitution(nom:string, localisation:string, type:string, tel:string, description:string){
     try {
       //ANCHOR image
+      const auth = getAuth();
+      const user = auth.currentUser;
       const likeCollection= collection(this.injector.get('A'), "Institution");
-      const q = query(likeCollection, where("Nom", "==", "TODO"));
+      const q = query(likeCollection, where("Mail", "==", user?.email));
       const querySnapshot = await getDocs(q);
       let isCreated : boolean = false;
       if(querySnapshot.empty){
@@ -31,14 +33,19 @@ export class UpdateEtablissementComponent implements OnInit {
           Localisation: localisation,
           tipe : type, 
           Phone:tel,
-          Description:description
+          Description:description,
+          Mail: user?.email
         });
       }else{
         querySnapshot.forEach((doc) => {
           const data = doc.data();
           updateDoc(doc.ref,{
+            Nom:nom,
             Localisation: localisation,
-            tipe : type //not a language error I just can't use "Type"
+            tipe : type, 
+            Phone:tel,
+            Description:description,
+            Mail: user?.email
           });
         });
       }

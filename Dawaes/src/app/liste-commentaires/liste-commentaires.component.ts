@@ -34,7 +34,6 @@ export class ListeCommentairesComponent implements OnInit {
           this.comment.push(data['text']);
       });
     });
-
   }
 
 }

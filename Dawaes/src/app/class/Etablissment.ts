@@ -1,26 +1,20 @@
 //Classe pour stocker les informations sur un établissement
 export class Etablissement {
     constructor ( 
-        public img: string,
-        public nom: string,
-        public adresse: string,
-        public codePostal: string,
-        public ville: string,
-        public pays: string,
-        public tel: string,
+        //public img: string,
+        public name: string,
+        public localisation: string,
+        public telephone: string,
+        public type: string,
+        public desc: string,
         public mail: string,
-        public prix: string,
-        public description : string
     ) {
-        this.img = img;
-        this.nom = nom;
-        this.adresse = adresse;
-        this.codePostal = codePostal;
-        this.ville = ville;
-        this.pays = pays;
-        this.tel = tel;
+        //this.img = img;
+        this.name = name;
+        this.localisation = localisation;
+        this.telephone = telephone;
+        this.type = type;
+        this.desc = desc;
         this.mail = mail;
-        this.prix = prix;
-        this.description = description
     }
 }
