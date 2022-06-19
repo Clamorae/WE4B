@@ -7,12 +7,14 @@ import { getAuth, signOut } from 'firebase/auth';
   styleUrls: ['./profile-utilisateur.component.css']
 })
 export class ProfileUtilisateurComponent implements OnInit {
-  //TODO - check le login, récupérer l'id via routage
+  //TODO - check le login et si est chef d'établissement, récupérer l'id via routage
 
   login:boolean
+  estChef:boolean
 
   constructor() {
     this.login=true
+    this.estChef=true
    }
 
   ngOnInit(): void {

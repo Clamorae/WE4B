@@ -3,7 +3,7 @@ import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core
 import { ObtainEtablissementService } from '../obtain-etablissement.service';
 import { addDoc, collection } from 'firebase/firestore';
 import { FirebaseService } from '../services/firebase.service';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
 
 @Component({
   selector: 'app-profile-etablissement',
@@ -42,6 +42,14 @@ export class ProfileEtablissementComponent implements OnInit {
       console.error("Error adding document: ", e);
     }
   }
-  
+
+  signOut():void{
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      console.log("signed out")
+    }).catch((error) => {
+      console.log("not signed out")
+});
+  }
 
 }

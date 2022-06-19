@@ -8,10 +8,6 @@
     <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
     <input type="password" class="form-control" id="exampleInputPassword1" #password>
   </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
-  </div>
   <button type="submit" class="btn" [routerLink]="'/utilisateur'" (click) = "onSignUp(email.value,password.value)" [ngClass]="['redButton']">Envoyer</button>
   <a class="nav-link" [routerLink]="'/newaccount'">Pas de compte?</a>
   <button (click) = "onGoogle()" [ngClass]="['login-with-google-btn']">Se connecter avec google</button>
