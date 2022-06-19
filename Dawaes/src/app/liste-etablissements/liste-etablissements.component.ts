@@ -18,7 +18,6 @@ export class ListeEtablissementsComponent implements OnInit {
    @Output() isLogout = new EventEmitter<void>()
    constructor(private service:ObtainEtablissementListService, public firebaseService:FirebaseService, private injector: Injector) {
      const db = this.injector.get('A');
-     //this.etablissements=service.getData();
    }
  
    ngOnInit(): void {

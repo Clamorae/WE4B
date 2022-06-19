@@ -1,7 +1,7 @@
 <div class="card mb-3 text-center" style=" border-width: 0ch;" [ngClass]="['bg']">
     <!--<img src={{etablissement.img}} class="img-fluid rounded-start" alt={{etablissement.nom}}>-->
     <div class="card-body">
-      <a class="card-title" [routerLink]="'/etablissement'"><h5>{{etablissement.name}}</h5></a>
+      <a class="card-title" [routerLink]="['/etablissement',etablissement.mail]"><h5>{{etablissement.name}}</h5></a>
 
       <div *ngIf="login">
         <button [ngClass]="['like']" class="btn" (click)="like()" *ngIf="estAime;else elseBlock"><img src="../../assets/red_heart.png" alt="unlike" width="50" height="50"><p>Ne plus aimer</p></button>

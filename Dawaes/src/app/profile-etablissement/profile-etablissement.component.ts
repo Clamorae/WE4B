@@ -1,9 +1,11 @@
 import { Etablissement } from './../class/Etablissment';
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 import { ObtainEtablissementService } from '../obtain-etablissement.service';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, onSnapshot, query, where } from 'firebase/firestore';
 import { FirebaseService } from '../services/firebase.service';
 import { getAuth, signOut } from 'firebase/auth';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile-etablissement',
@@ -12,17 +14,32 @@ import { getAuth, signOut } from 'firebase/auth';
 })
 export class ProfileEtablissementComponent implements OnInit {
 
-  etablissement:Etablissement
+  etablissement!:Etablissement
+  etablMail!:string
   login:boolean
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(service: ObtainEtablissementService, public firebaseService:FirebaseService, private injector: Injector) {
-    //TODO - check le login, récupérer l'id via routage
-    this.etablissement = service.getData(1)
-    this.login=true
+  constructor(private _Activatedroute:ActivatedRoute, service: ObtainEtablissementService, public firebaseService:FirebaseService, private injector: Injector) {
+    this._Activatedroute.paramMap.subscribe(params => { 
+      this.etablMail = params.get('email')||'0'; 
+      this.updateScreen();
+    });
+    this.login=true;
   }
 
   ngOnInit(): void {
+  }
+
+  updateScreen(){
+    const auth = getAuth()
+    const user = auth.currentUser;
+    const q = query(collection(this.injector.get('A'), "Institution"), where("Mail", "==", this.etablMail));
+    const observable = onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        this.etablissement = new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail']);
+      });
+    });
   }
 
   async addComment(comment:string){

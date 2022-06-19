@@ -1,6 +1,6 @@
 <div class="container" [ngClass]="['bg']">
     <div class="btn-group" *ngIf="this.login == true">
-        <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="'/update'" >Editer</button> <!-- TODO add/ modify etablsisement-->
+        <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="'/update'">Editer</button>
         <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="''" (click)="signOut()">Déconnexion</button>
     </div>
     <app-etablissement [etablissement]="this.etablissement"></app-etablissement>

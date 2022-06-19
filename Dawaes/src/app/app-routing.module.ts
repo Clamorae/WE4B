@@ -10,7 +10,7 @@ import { UpdateEtablissementComponent } from './update-etablissement/update-etab
 const routes: Routes = [
   {path:'', component: LoginFormComponent},
   {path:'newaccount', component: CreateAccountFormComponent},
-  {path:'etablissement', component: ProfileEtablissementComponent},
+  {path:'etablissement/:email', component: ProfileEtablissementComponent},
   {path:'search',component:ListeEtablissementsComponent},
   {path:'utilisateur',component:ProfileUtilisateurComponent},
   {path: 'update', component:UpdateEtablissementComponent}
