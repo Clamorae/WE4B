@@ -43,3 +43,8 @@
 .redButton{
     background-color: crimson;
 }
+
+.warning{
+    color: red;
+    font-weight: bolder;
+}

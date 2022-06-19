@@ -4,6 +4,8 @@ import { FirebaseService } from '../services/firebase.service';
 import { collection, addDoc } from "firebase/firestore"; 
 import { Injector } from '@angular/core';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login-form',
@@ -11,6 +13,11 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
+
+  myForm = new FormGroup({
+    mdp: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    email: new FormControl('', [Validators.required, Validators.email])
+    });
 
   @Output() isLogout = new EventEmitter<void>()
   constructor(public firebaseService:FirebaseService, private injector: Injector) {
