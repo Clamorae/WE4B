@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FirebaseApp, initializeApp } from '@angular/fire/app';
 import { FirebaseService } from '../services/firebase.service';
@@ -14,24 +15,33 @@ import { FormControl, FormGroup,Validators } from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
 
+  public attempted:boolean
+
   myForm = new FormGroup({
     mdp: new FormControl('', [Validators.required, Validators.minLength(8)]),
     email: new FormControl('', [Validators.required, Validators.email])
     });
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(public firebaseService:FirebaseService, private injector: Injector) {
+  constructor(public firebaseService:FirebaseService, private injector: Injector, public router:Router) {
     const db = this.injector.get('A');
+    this.attempted=false
   }
 
   ngOnInit(): void {
   }
 
-  async onSignUp(email:string, password:string): Promise<void>{
+  async onSignUp(email:string, password:string,event:Event): Promise<void>{
+    this.attempted=true
+    //window.alert("ok")
+
+    //if this check fails, nothing happens and the user stays on the login page
     await  this.firebaseService.signIn(email,password);
     if(this.firebaseService.isLoggedIn){
       console.log("connected");
-    }
+      this.router.navigateByUrl("/utilisateur")
+    } 
+    
   }
 
   async onGoogle(){
