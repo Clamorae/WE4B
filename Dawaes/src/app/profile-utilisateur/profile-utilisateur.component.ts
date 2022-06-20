@@ -1,3 +1,5 @@
+import { FirebaseService } from './../services/firebase.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { getAuth, signOut } from 'firebase/auth';
 
@@ -12,9 +14,15 @@ export class ProfileUtilisateurComponent implements OnInit {
   login:boolean
   estChef:boolean
 
-  constructor() {
+  constructor(public router: Router,public firebase:FirebaseService) {
     this.login=true
     this.estChef=true
+
+    const auth = getAuth()
+    const user = auth.currentUser;
+    if(user==null){
+      this.router.navigateByUrl("")
+    }
    }
 
   ngOnInit(): void {

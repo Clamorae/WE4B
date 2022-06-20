@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
@@ -11,8 +12,14 @@ import { FirebaseService } from '../services/firebase.service';
 export class UpdateEtablissementComponent implements OnInit {
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor( public firebaseService:FirebaseService, private injector: Injector) {
+  constructor( public firebaseService:FirebaseService, private injector: Injector,public router:Router) {
     const db = this.injector.get('A');
+
+    const auth = getAuth()
+    const user = auth.currentUser;
+    if(user==null){
+      this.router.navigateByUrl("")
+    }
   }
 
   ngOnInit(): void { 
