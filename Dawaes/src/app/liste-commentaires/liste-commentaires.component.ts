@@ -3,6 +3,7 @@ import { Component, OnInit, Input, EventEmitter, Injector, Output } from '@angul
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { FirebaseService } from '../services/firebase.service';
 import { getAuth } from 'firebase/auth';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-commentaires',
@@ -17,23 +18,40 @@ export class ListeCommentairesComponent implements OnInit {
   //est lié soit à un utilisateur soit à un établissement:
   @Input() estUtilisateur!:boolean
   @Input() id!:number
+  etablMail!:string
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(private service:ObtainCommentairesService, public firebaseService:FirebaseService, private injector: Injector) {
+  constructor(private _Activatedroute:ActivatedRoute,private service:ObtainCommentairesService, public firebaseService:FirebaseService, private injector: Injector,private router: Router) {
     const db = this.injector.get('A');
+    this._Activatedroute.paramMap.subscribe(params => { 
+      this.etablMail = params.get('email')||'0';
+    });
   }
 
   ngOnInit(): void {
+    console.log(this.router.url);
     const auth = getAuth()
     const user = auth.currentUser;
-    const q = query(collection(this.injector.get('A'), "Comment"), where("Etablissement", "==", "TODO"));
-    const observable = onSnapshot(q, (querySnapshot) => {
+    if(this.router.url=="/utilisateur"){
+      const q = query(collection(this.injector.get('A'), "Comment"), where("User", "==", user?.email));
+      const observable = onSnapshot(q, (querySnapshot) => {
+        this.comment = [];
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            this.comment.push(data['text']);
+        });
+      });
+    }else{
+      const q = query(collection(this.injector.get('A'), "Comment"), where("Etablissement", "==", this.etablMail));
+      const observable = onSnapshot(q, (querySnapshot) => {
       this.comment = [];
       querySnapshot.forEach((doc) => {
           const data = doc.data();
           this.comment.push(data['text']);
       });
     });
+    }
+    
   }
 
 }

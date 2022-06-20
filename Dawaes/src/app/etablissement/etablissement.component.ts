@@ -60,7 +60,7 @@ export class EtablissementComponent implements OnInit {
           const docRef = await addDoc(collection(this.injector.get('A'), "like"), {
             isLiked: true,
             User: user.email,
-            Etablissement: "TODO"
+            Etablissement: mail
           });
         console.log("Document written with ID: ", docRef.id);
         }

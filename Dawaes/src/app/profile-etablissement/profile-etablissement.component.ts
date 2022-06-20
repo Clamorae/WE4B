@@ -49,7 +49,7 @@ export class ProfileEtablissementComponent implements OnInit {
         const docRef = await addDoc(collection(this.injector.get('A'), "Comment"), {
           text: comment,
           User: user.email,
-          Etablissement: "TODO"
+          Etablissement: this.etablMail
           //ANCHOR maybe add rating
         });
       console.log("Document written with ID: ", docRef.id);
