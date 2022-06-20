@@ -14,6 +14,8 @@ export class ListeEtablissementsComponent implements OnInit {
 
   @Input() titre?: string
   etablissements : Etablissement[] = []
+  popular:Etablissement[] = []
+  popuLike:number[] = [0,0,0,0,0]
 
   @Output() isLogout = new EventEmitter<void>()
   constructor(private service:ObtainEtablissementListService, public firebaseService:FirebaseService, private injector: Injector) {
@@ -52,21 +54,45 @@ export class ListeEtablissementsComponent implements OnInit {
         }
         if(this.titre == "Etablissements populaires"){
           this.etablissements = [];
-          console.log(this.etablissements);
+          this.popular =[];
+          this.popuLike = [0,0,0,0,0]
           const q2 = query(collection(this.injector.get('A'), "like"), where("Etablissement", "==", data['Mail']),where("isLiked", "==",true));
           const observable2 = onSnapshot(q2, (querySnapshot2) => {
-            querySnapshot2.forEach((doc2) => {
-              const data2 = doc2.data();
-              let isAlready = false;
-              for(let i = 0; i < this.etablissements.length; i++){
-                if (this.etablissements[i].mail == data2['Etablissement']){
-                  isAlready = true;
+            if (querySnapshot2.size > this.popuLike[0]){
+              this.popuLike[0]=querySnapshot2.size;
+              this.popular[0]=new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail']);
+              for (let i = 0; i < this.popuLike.length; i++) {
+                let change = false;
+                for (let j = 0; j < this.popuLike.length - 1; j++) {
+                  if (this.popuLike[j] > this.popuLike[j + 1]) {
+                    const temp = this.popuLike[j];
+                    this.popuLike[j] = this.popuLike[j + 1];
+                    this.popuLike[j + 1] = temp;
+                    const buffer = this.popular[j];
+                    this.popular[j] = this.popular[j + 1];
+                    this.popular[j + 1] = buffer;
+                    change = true;
+                  }
+                }
+                if (!change) {
+                  break;
                 }
               }
-              if(isAlready==false){
-                this.etablissements.push(new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail']));
+            }
+          let j = 4;
+          while(this.popuLike[j]>0){
+            let isAlready = false;
+            for(let i = 0; i < this.etablissements.length; i++){
+              if (this.etablissements[i].mail == this.popular[j].mail){
+                isAlready = true;
               }
-            });
+            }
+            if(isAlready==false){
+              this.etablissements.push(this.popular[j]);
+            }
+            j--;
+          }
+          console.log(this.popuLike);
           });
         }   
       });
