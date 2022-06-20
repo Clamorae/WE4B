@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Injector, OnInit, Output } from '@angular/core';
+import { FirebaseService } from './../services/firebase.service';
+import { Router } from '@angular/router';
 import { getAuth, signOut } from 'firebase/auth';
 import { query, collection, where, onSnapshot } from 'firebase/firestore';
 import { ObtainCommentairesService } from '../obtain-commentaires.service';
-import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-profile-utilisateur',
@@ -15,10 +16,18 @@ export class ProfileUtilisateurComponent implements OnInit {
   isOwner!:boolean
   uEmail?:any
 
-  @Output() isLogout = new EventEmitter<void>()
-  constructor(private service:ObtainCommentairesService, public firebaseService:FirebaseService, private injector: Injector) {
+  constructor(public router: Router, private service:ObtainCommentairesService, public firebaseService:FirebaseService, private injector: Injector) {
     this.login=true
     const db = this.injector.get('A');
+  }
+
+  @HostListener('window:load')
+  onLoad() {
+    const auth = getAuth()
+    const user = auth.currentUser;
+    if(user==null){
+      this.router.navigateByUrl("")
+    }
   }
 
   ngOnInit(): void {

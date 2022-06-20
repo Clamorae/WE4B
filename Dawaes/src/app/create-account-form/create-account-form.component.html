@@ -12,9 +12,12 @@
       <input type="checkbox" class="form-check-input" id="exampleCheck1" #check>
       <label class="form-check-label" for="exampleCheck1" >Je suis chef d'établissement</label>
     </div>
-    <div *ngIf="!myForm.valid" [ngClass]="['warning']">
+    <div *ngIf="this.attempted" [ngClass]="['warning']">
+      Echec de la création de compte!
+    </div>
+    <div *ngIf="!myForm.valid && myForm.touched" [ngClass]="['warning']">
       Formulaire invalide! Merci de rentrer une adresse email valide et un mot de passe d'au moins 8 caractères!
     </div>
-    <button type="submit" class="btn" [routerLink]="'/utilisateur'" (click)="onSignIn(email.value,password.value, check.checked)" [ngClass]="['redButton']" [disabled]='!myForm.valid'>Envoyer</button><br>
+    <button class="btn " (click)="onSignIn(email.value,password.value)" [ngClass]="['redButton']" [disabled]='!myForm.valid'>Envoyer</button><br>
     <button (click) = "onGoogle()" [ngClass]="['login-with-google-btn']">S'inscrire avec google</button> 
 </form>

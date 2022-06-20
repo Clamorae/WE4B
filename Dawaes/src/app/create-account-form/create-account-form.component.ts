@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { FirebaseService } from '../services/firebase.service';
@@ -10,23 +11,32 @@ import { FormControl, FormGroup,Validators } from '@angular/forms';
   styleUrls: ['./create-account-form.component.css']
 })
 export class CreateAccountFormComponent implements OnInit {
+
+  public attempted:boolean
+
   myForm = new FormGroup({
     mdp: new FormControl('', [Validators.required, Validators.minLength(8)]),
     email: new FormControl('', [Validators.required, Validators.email])
     });
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(public firebaseService:FirebaseService, private injector: Injector) {
+  constructor(public firebaseService:FirebaseService, private injector: Injector,public router:Router) {
     const db = this.injector.get('A');
+
+    this.attempted=false
   }
 
   ngOnInit(): void {
   }
 
-  async onSignIn(email:string, password:string, check:boolean): Promise<void> {
+  async onSignIn(email:string, password:string): Promise<void>{
+    this.attempted=true
+
+    //if this check fails, nothing happens and the user stays on the create account page
     await  this.firebaseService.signUp(email,password);
     if(this.firebaseService.isLoggedIn){
       console.log("connected");
+      this.router.navigateByUrl("/utilisateur")
     }
   }
 
