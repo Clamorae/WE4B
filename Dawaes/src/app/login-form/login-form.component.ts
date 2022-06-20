@@ -44,7 +44,7 @@ export class LoginFormComponent implements OnInit {
     
   }
 
-  async onGoogle(){
+  /*async onGoogle(){
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
     signInWithPopup(auth, provider)
@@ -59,6 +59,7 @@ export class LoginFormComponent implements OnInit {
         const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
       });
-  }
+    this.router.navigateByUrl("/utilisateur");
+  }*/
 
 }
