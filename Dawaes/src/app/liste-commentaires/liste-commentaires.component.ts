@@ -29,7 +29,6 @@ export class ListeCommentairesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.router.url);
     const auth = getAuth()
     const user = auth.currentUser;
     if(this.router.url=="/utilisateur"){

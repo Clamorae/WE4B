@@ -20,7 +20,7 @@ export class EtablissementComponent implements OnInit {
   @Output() isLogout = new EventEmitter<void>()
   constructor(public firebaseService:FirebaseService, private injector: Injector) {
     const db = this.injector.get('A');
-   }
+  }
 
   ngOnInit(): void {
     this.estAime=true
@@ -38,33 +38,30 @@ export class EtablissementComponent implements OnInit {
       const user = auth.currentUser;
       const q = query(likeCollection, where("User", "==", user?.email), where("Etablissement", "==", mail));
       const querySnapshot = await getDocs(q);
-      let isModified : boolean = false;
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach(async (doc) => {
         const data = doc.data();
         if(data['isLiked']==true) {
           updateDoc(doc.ref,{
             isLiked: false
           });
-          isModified = true
+          this.change();
         }else if(data['isLiked']==false) {
           updateDoc(doc.ref,{
             isLiked: true
           });
-          isModified = true
+          this.change();
         }
-        this.change();
+        if(querySnapshot.empty){
+          if (user !== null) {
+            const docRef = await addDoc(collection(this.injector.get('A'), "like"), {
+              isLiked: true,
+              User: user.email,
+              Etablissement: mail
+            });
+          console.log("Document written with ID: ", docRef.id);
+          }
+        }
       });
-
-      if(isModified == false){
-        if (user !== null) {
-          const docRef = await addDoc(collection(this.injector.get('A'), "like"), {
-            isLiked: true,
-            User: user.email,
-            Etablissement: mail
-          });
-        console.log("Document written with ID: ", docRef.id);
-        }
-      }
     } catch (e) {
       console.error("Error adding document: ", e);
     }
