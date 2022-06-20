@@ -31,12 +31,12 @@ export class EtablissementComponent implements OnInit {
     this.estAime=!this.estAime
   }
 
-  async like(){
+  async like(mail:string){
     try {
       const likeCollection= collection(this.injector.get('A'), "like");
       const auth = getAuth()
       const user = auth.currentUser;
-      const q = query(likeCollection, where("User", "==", user?.email), where("Etablissement", "==", "TODO"));
+      const q = query(likeCollection, where("User", "==", user?.email), where("Etablissement", "==", mail));
       const querySnapshot = await getDocs(q);
       let isModified : boolean = false;
       querySnapshot.forEach((doc) => {
