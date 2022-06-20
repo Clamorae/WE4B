@@ -9,3 +9,8 @@
     </select>
     <button type="button" class="btn" [routerLink]="'/search'" [ngClass]="['crimsonButton']">recherche</button>
   </div>
+  <div class="btn-group" *ngIf="this.login == true">
+    <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="['/etablissement',this.mail]">Mon établissement</button>
+    <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="'/utilisateur'">Mon profil</button>
+    <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="''" (click)="signOut()">Déconnexion</button>
+</div>

@@ -19,5 +19,5 @@
       <label for="description" class="form-label">Description de l'établissement</label>
       <input type="description" class="form-control" id="description" aria-describedby="description" #description>
     </div>
-    <button type="submit" class="btn btn-primary" [routerLink]="'/etablissement'" (click) = "updateInstitution(nom.value,localisation.value,type.value,telephone.value,description.value)">Submit</button>
+    <button type="submit" class="btn" [routerLink]="'/etablissement'" [ngClass]="['crimsonButton']" (click) = "updateInstitution(nom.value,localisation.value,type.value,telephone.value,description.value)">Submit</button>
   </form>

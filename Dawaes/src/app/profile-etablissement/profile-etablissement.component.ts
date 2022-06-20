@@ -59,13 +59,4 @@ export class ProfileEtablissementComponent implements OnInit {
     }
   }
 
-  signOut():void{
-    const auth = getAuth();
-    signOut(auth).then(() => {
-      console.log("signed out")
-    }).catch((error) => {
-      console.log("not signed out")
-});
-  }
-
 }
