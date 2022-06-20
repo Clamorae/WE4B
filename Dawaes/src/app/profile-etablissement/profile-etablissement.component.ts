@@ -5,7 +5,6 @@ import { addDoc, collection, onSnapshot, query, where } from 'firebase/firestore
 import { FirebaseService } from '../services/firebase.service';
 import { getAuth, signOut } from 'firebase/auth';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile-etablissement',

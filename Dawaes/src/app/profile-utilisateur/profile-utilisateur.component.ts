@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 import { getAuth, signOut } from 'firebase/auth';
+import { query, collection, where, onSnapshot } from 'firebase/firestore';
+import { ObtainCommentairesService } from '../obtain-commentaires.service';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-profile-utilisateur',
@@ -7,17 +10,37 @@ import { getAuth, signOut } from 'firebase/auth';
   styleUrls: ['./profile-utilisateur.component.css']
 })
 export class ProfileUtilisateurComponent implements OnInit {
-  //TODO - check le login et si est chef d'établissement, récupérer l'id via routage
 
   login:boolean
-  estChef:boolean
+  isOwner!:boolean
+  uEmail?:any
 
-  constructor() {
+  @Output() isLogout = new EventEmitter<void>()
+  constructor(private service:ObtainCommentairesService, public firebaseService:FirebaseService, private injector: Injector) {
     this.login=true
-    this.estChef=true
-   }
+    const db = this.injector.get('A');
+  }
 
   ngOnInit(): void {
+    this.setIsOwner();
+  }
+
+  async setIsOwner(){
+    this.isOwner = false;
+    const auth = getAuth()
+    const user = auth.currentUser;
+    const q = query(collection(this.injector.get('A'), "User"), where("Mail", "==", user?.email));
+    const observable = onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data['isOwner']==true) {
+          this.isOwner = true;
+          this.uEmail = user?.email;
+        }else{
+          this.isOwner = false;
+        }
+      });
+    });
   }
 
   signOut():void{

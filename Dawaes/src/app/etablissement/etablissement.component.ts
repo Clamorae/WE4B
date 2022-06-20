@@ -69,5 +69,4 @@ export class EtablissementComponent implements OnInit {
       console.error("Error adding document: ", e);
     }
   }
-
 }

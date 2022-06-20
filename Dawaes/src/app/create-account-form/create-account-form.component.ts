@@ -23,7 +23,7 @@ export class CreateAccountFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onSignIn(email:string, password:string): Promise<void>{
+  async onSignIn(email:string, password:string, check:boolean): Promise<void> {
     await  this.firebaseService.signUp(email,password);
     if(this.firebaseService.isLoggedIn){
       console.log("connected");

@@ -1,6 +1,6 @@
 <div *ngIf="this.login == true;else elseBlock">
     <div class="btn-group" *ngIf="this.login == true">
-        <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="'/etablissement'" *ngIf="this.estChef">Mon établissement</button>
+        <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="['/etablissement',uEmail]" *ngIf="this.isOwner">Mon établissement</button>
         <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="''" (click)="signOut()">Déconnexion</button>
     </div>
     <app-liste-etablissements titre="Etablissements aimés"></app-liste-etablissements>
