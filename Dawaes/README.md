@@ -11,7 +11,7 @@ By TROMBINI Quentin and RAMOS Jules.
 
 `npm install --save angular-calendar date-fns` for angular-calendar
 
-**Unfortunately, the calendar had to be removed because it was too inconsistent to be properly integrated. Code for it was left as a showcase of our work.**
+**Unfortunately, the calendar had to be removed because it was too inconsistent to be properly integrated (issues happened because of the response time of firebase). Code for it was left as a showcase of our work.**
 
 ## Auto-generated documentation:
 
