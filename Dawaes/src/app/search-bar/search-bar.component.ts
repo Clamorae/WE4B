@@ -1,4 +1,5 @@
-import { Router } from '@angular/router';
+import { ObtainEtablissementListService } from './../obtain-etablissement-list.service';
+import { Router, ActivatedRoute, NavigationEnd, Event } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FirebaseService } from './../services/firebase.service';
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
@@ -16,9 +17,11 @@ export class SearchBarComponent implements OnInit {
   public login!:boolean
   public mail:string|null
   public etablissement: Etablissement[] = []//ANCHOR faire passer cette variable vers list-etablissement et l'afficher quand le routing==search (affiche résultat requete)
+  public isMenu!:boolean
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(public firebaseService:FirebaseService, private injector: Injector) {
+  constructor(public firebaseService:FirebaseService, private injector: Injector,private activatedRoute:ActivatedRoute,private router:Router,public service:ObtainEtablissementListService) {
+    this.isMenu=false
     this.mail=""
     const auth = getAuth();
 
@@ -31,6 +34,12 @@ export class SearchBarComponent implements OnInit {
         this.mail=""
       }
     });
+
+    this.router.events.subscribe((event: Event) =>{
+      if (event instanceof NavigationEnd) {
+        this.isMenu = (event.url=="/");
+      }
+    })
   }
 
   ngOnInit(): void {
@@ -46,6 +55,14 @@ export class SearchBarComponent implements OnInit {
   }
 
   findByParam(cat:string,val:string):void{
+    switch(cat){
+      case "0": cat="Nom"
+      break;
+      case "1":cat="Localisation"
+      break;
+      case "2":cat="Type"
+      break;
+    }
     const auth = getAuth()
     const user = auth.currentUser;
         const q = query(collection(this.injector.get('A'), "Institution"), where(cat, "==", val));
@@ -55,6 +72,9 @@ export class SearchBarComponent implements OnInit {
             this.etablissement.push(new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail']));
           });
         });
+        this.etablissement.push(new Etablissement("search","should","be","working","wtf","is wrong"))
+        //window.alert(this.etablissement[0].name)
+        this.service.setList(this.etablissement)
   }
 
 }

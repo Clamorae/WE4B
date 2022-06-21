@@ -15,6 +15,6 @@
 </div>
 <ng-template #elseBlock>
     <div class="btn-group" >
-        <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="''">Retour à l'accueil</button>
+        <button type="button" *ngIf="!this.isMenu" class="btn" [ngClass]="['crimsonButton']" [routerLink]="''">Retour à l'accueil</button>
     </div>
 </ng-template>

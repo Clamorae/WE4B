@@ -4,7 +4,7 @@ import { Etablissement } from '../class/Etablissment';
 import { getAuth } from 'firebase/auth';
 import { query, collection, where, onSnapshot } from 'firebase/firestore';
 import { FirebaseService } from '../services/firebase.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, Event } from '@angular/router';
 
 @Component({
   selector: 'app-liste-etablissements',
@@ -31,6 +31,14 @@ export class ListeEtablissementsComponent implements OnInit {
     }else if(this.router.url!="/search"){
       this.updateArray();
     }
+
+      /*this.router.events.subscribe((event: Event) =>{
+      if (event instanceof NavigationEnd) {
+        if(event.url=="/search"){
+          this.updateArray()
+        }
+      }
+    })*/
   }
  
   ngOnInit(): void {
@@ -41,9 +49,12 @@ export class ListeEtablissementsComponent implements OnInit {
     const user = auth.currentUser;
     const q = query(collection(this.injector.get('A'), "Institution"));
     const observable = onSnapshot(q, (querySnapshot) => {
+      if(this.titre != "Etablissements populaires" && this.router.url=="/search"){
+        this.etablissements=this.service.getList()
+      }
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        if(this.titre!="Etablissements populaires"){
+        if(this.titre!="Etablissements populaires" && this.router.url!="/search"){
           this.etablissements = [];
           const q2 = query(collection(this.injector.get('A'), "like"), where("Etablissement", "==", data['Mail']),where("User", "==",user?.email),where("isLiked", "==",true));
           const observable2 = onSnapshot(q2, (querySnapshot2) => {

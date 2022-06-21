@@ -9,4 +9,12 @@ export class ObtainEtablissementListService {
   toReturn:Etablissement[]=[]
 
   constructor() { }
+
+  setList(etabl:Etablissement[]){
+    this.toReturn=etabl
+  }
+
+  getList():Etablissement[]{
+    return this.toReturn
+  }
 }
