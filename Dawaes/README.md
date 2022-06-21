@@ -11,6 +11,8 @@ By TROMBINI Quentin and RAMOS Jules.
 
 `npm install --save angular-calendar date-fns` for angular-calendar
 
+**Unfortunately, the calendar had to be removed because it was too inconsistent to be properly integrated. Code for it was left as a showcase of our work.**
+
 ## Auto-generated documentation:
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.

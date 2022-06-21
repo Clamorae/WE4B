@@ -1,11 +1,12 @@
 <div class="container" [ngClass]="['bg']">
     <br>
-    <div class="btn-group" *ngIf="this.login == true">
+    <div class="btn-group" *ngIf="this.login == true && this.userEmail==this.etablMail">
         <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="'/update'">Editer</button>
     </div>
     <app-etablissement [etablissement]="this.etablissement"></app-etablissement>
     <br>
-    <app-one-week-calendar></app-one-week-calendar>
+    <!---Unfortunately, the calendar had to be removed because it was too inconsistent to be properly integrated. Code for it was left as a showcase of our work.
+    <app-one-week-calendar></app-one-week-calendar>-->
     <br>
     <div class="container">
         <app-liste-commentaires [estUtilisateur]=false [id]=3 ></app-liste-commentaires>
