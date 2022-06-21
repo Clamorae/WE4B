@@ -11,7 +11,4 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-/*ANCHOR si t'a le temps
-calendar
-affichage like
-*/
+

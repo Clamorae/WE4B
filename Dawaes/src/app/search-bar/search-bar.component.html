@@ -5,6 +5,8 @@
         <option selected value="0">Nom</option>
         <option value="1">Localisation</option>
         <option value="2">Type</option>
+        <option value="3">Email</option>
+        <option value="4">Téléphone</option>
     </select>
     <button type="button" class="btn" [routerLink]="'/search'" [ngClass]="['crimsonButton']" (click)="findByParam(category.value ,search.value)">recherche</button>
   </div>

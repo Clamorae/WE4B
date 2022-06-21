@@ -1,4 +1,3 @@
-import { ObtainCommentairesService } from './../obtain-commentaires.service';
 import { Component, OnInit, Input, EventEmitter, Injector, Output } from '@angular/core';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { FirebaseService } from '../services/firebase.service';
@@ -21,7 +20,7 @@ export class ListeCommentairesComponent implements OnInit {
   etablMail!:string
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(private _Activatedroute:ActivatedRoute,private service:ObtainCommentairesService, public firebaseService:FirebaseService, private injector: Injector,private router: Router) {
+  constructor(private _Activatedroute:ActivatedRoute, public firebaseService:FirebaseService, private injector: Injector,private router: Router) {
     const db = this.injector.get('A');
     this._Activatedroute.paramMap.subscribe(params => { 
       this.etablMail = params.get('email')||'0';

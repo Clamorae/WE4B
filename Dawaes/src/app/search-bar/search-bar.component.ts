@@ -16,7 +16,7 @@ export class SearchBarComponent implements OnInit {
 
   public login!:boolean
   public mail:string|null
-  public etablissement: Etablissement[] = []//ANCHOR faire passer cette variable vers list-etablissement et l'afficher quand le routing==search (affiche résultat requete)
+  public etablissement: Etablissement[] = []
   public isMenu!:boolean
 
   @Output() isLogout = new EventEmitter<void>()
@@ -55,25 +55,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   findByParam(cat:string,val:string):void{
-    this.etablissement=[]
-    switch(cat){
-      case "0": cat="Nom"
-      break;
-      case "1":cat="Localisation"
-      break;
-      case "2":cat="tipe"
-      break;
-    }
-    const auth = getAuth()
-    const user = auth.currentUser;
-        const q = query(collection(this.injector.get('A'), "Institution"), where(cat, "==", val));
-        const observable = onSnapshot(q, (querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            this.etablissement.push(new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail']));
-          });
-        });
-        this.service.setList(this.etablissement)
+        this.service.setList(cat,val)
   }
 
 }

@@ -3,7 +3,6 @@ import { FirebaseService } from './../services/firebase.service';
 import { Router } from '@angular/router';
 import { getAuth, signOut } from 'firebase/auth';
 import { query, collection, where, onSnapshot } from 'firebase/firestore';
-import { ObtainCommentairesService } from '../obtain-commentaires.service';
 
 @Component({
   selector: 'app-profile-utilisateur',
@@ -16,7 +15,7 @@ export class ProfileUtilisateurComponent implements OnInit {
   isOwner!:boolean
   uEmail?:any
 
-  constructor(public router: Router, private service:ObtainCommentairesService, public firebaseService:FirebaseService, private injector: Injector) {
+  constructor(public router: Router, public firebaseService:FirebaseService, private injector: Injector) {
     this.login=true
     const db = this.injector.get('A');
   }

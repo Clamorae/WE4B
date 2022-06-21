@@ -1,6 +1,5 @@
 import { Etablissement } from './../class/Etablissment';
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
-import { ObtainEtablissementService } from '../obtain-etablissement.service';
 import { addDoc, collection, onSnapshot, query, where } from 'firebase/firestore';
 import { FirebaseService } from '../services/firebase.service';
 import { getAuth, signOut } from 'firebase/auth';
@@ -19,7 +18,7 @@ export class ProfileEtablissementComponent implements OnInit {
   public userEmail:string|null|undefined
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(private _Activatedroute:ActivatedRoute, service: ObtainEtablissementService, public firebaseService:FirebaseService, private injector: Injector) {
+  constructor(private _Activatedroute:ActivatedRoute,  public firebaseService:FirebaseService, private injector: Injector) {
     const auth = getAuth()
     const user = auth.currentUser;
     this.userEmail=user?.email
