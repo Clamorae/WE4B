@@ -25,10 +25,14 @@ export class ListeCommentairesComponent implements OnInit {
     const db = this.injector.get('A');
     this._Activatedroute.paramMap.subscribe(params => { 
       this.etablMail = params.get('email')||'0';
+      this.updateComment();
     });
   }
 
   ngOnInit(): void {
+  }
+
+  updateComment():void{
     const auth = getAuth()
     const user = auth.currentUser;
     if(this.router.url=="/utilisateur"){
@@ -50,7 +54,6 @@ export class ListeCommentairesComponent implements OnInit {
       });
     });
     }
-    
   }
 
 }
