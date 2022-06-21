@@ -11,9 +11,14 @@ import { FirebaseService } from '../services/firebase.service';
 })
 export class UpdateEtablissementComponent implements OnInit {
 
+  public userEmail:string|null|undefined
+
   @Output() isLogout = new EventEmitter<void>()
   constructor( public firebaseService:FirebaseService, private injector: Injector,public router:Router) {
     const db = this.injector.get('A');
+    const auth=getAuth()
+    const user=auth.currentUser
+    this.userEmail=user?.email
   }
 
   @HostListener('window:load')
