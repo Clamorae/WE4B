@@ -17,6 +17,7 @@ export class EtablissementComponent implements OnInit {
   //attributs supplémentaires:
   estAime!:boolean
   login!:boolean
+  userEmail!:string
 
   @Output() isLogout = new EventEmitter<void>()
   constructor(public firebaseService:FirebaseService, private injector: Injector,private router:Router) {
@@ -34,10 +35,42 @@ export class EtablissementComponent implements OnInit {
         }
       }
     })
+
+    this.initLike()
+  }
+
+  setEmail(email:string){
+    this.userEmail=email
+  }
+
+  async initLike(){
+    try {
+      const likeCollection= collection(this.injector.get('A'), "like");
+      const auth = getAuth()
+      const user = auth.currentUser;
+      const q = query(likeCollection, where("User", "==", user?.email), where("Etablissement", "==", this.userEmail));
+      const querySnapshot = await getDocs(q);
+      if(querySnapshot.empty){
+        if (user !== null) {
+          const docRef = await addDoc(collection(this.injector.get('A'), "like"), {
+            isLiked: true,
+            User: user.email,
+            Etablissement: this.userEmail
+          });
+        console.log("Document written with ID: ", docRef.id);
+        }
+      }
+      querySnapshot.forEach(async (doc) => {
+        const data = doc.data();
+        this.estAime=data['isLiked']
+      });
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   }
 
   ngOnInit(): void {
-    this.estAime=true
+    this.estAime=false
   }
 
   change(){
