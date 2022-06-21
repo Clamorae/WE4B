@@ -1,5 +1,5 @@
 import { Router,Event,NavigationStart } from '@angular/router';
-import { Component, OnInit, Input, EventEmitter, Output, Injector } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, Injector, ViewChild, ElementRef } from '@angular/core';
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { Etablissement } from '../class/Etablissment';
@@ -17,6 +17,9 @@ export class EtablissementComponent implements OnInit {
   //attributs supplémentaires:
   estAime!:boolean
   login!:boolean
+  userMailString!:string
+
+  @ViewChild('someInput') someInput!: ElementRef;
 
   @Output() isLogout = new EventEmitter<void>()
   constructor(public firebaseService:FirebaseService, private injector: Injector,private router:Router) {
@@ -34,11 +37,18 @@ export class EtablissementComponent implements OnInit {
         }
       }
     })
+
+  }
+
+  ngAfterViewInit() {
+    this.userMailString=this.someInput.nativeElement.value
+    window.alert(this.userMailString)
   }
 
   ngOnInit(): void {
     this.estAime=true
   }
+  
 
   change(){
     this.estAime=!this.estAime

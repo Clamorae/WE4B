@@ -12,8 +12,9 @@
       <h6 class="card-subtitle mb-2 text-muted">{{etablissement.localisation}}</h6>
       <p class="card-text">{{etablissement.telephone}}</p>
       <p class="card-text">{{etablissement.type}}</p>
-      <p class="card-text">{{etablissement.mail}}</p>
+      <p class="card-text" #mail>{{etablissement.mail}}</p>
       <p></p>
       <p class="card-text">{{etablissement.desc}}</p>
     </div>
   </div>
+  <input #someInput placeholder={{etablissement.mail}}>
