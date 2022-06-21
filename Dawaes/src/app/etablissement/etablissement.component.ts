@@ -14,6 +14,18 @@ import { FirebaseService } from '../services/firebase.service';
 export class EtablissementComponent implements OnInit {
 
   @Input() etablissement!:Etablissement //< établissement contenu dans le composant
+
+  private _mail!: string;
+
+  @Input() 
+  set mail(inputMail: string) {
+    this._mail = inputMail;
+  }
+
+  get mail(): string {
+    return this._mail;
+  }
+
   //attributs supplémentaires:
   estAime!:boolean
   login!:boolean
@@ -34,6 +46,8 @@ export class EtablissementComponent implements OnInit {
         }
       }
     })
+
+    window.alert(this.mail)
   }
 
   ngOnInit(): void {
