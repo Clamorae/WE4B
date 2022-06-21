@@ -1,5 +1,18 @@
 # Dawaes
 
+## Description:
+
+Project for the WE4B course: an attempt at creating a website for traveling reservations (like Trivago).
+By TROMBINI Quentin and RAMOS Jules.
+
+## Required installs:
+
+`npm install firebase @angular/fire` for firebase
+
+`npm install --save angular-calendar date-fns` for angular-calendar
+
+## Auto-generated documentation:
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
 ## Development server
