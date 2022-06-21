@@ -92,7 +92,6 @@ export class ListeEtablissementsComponent implements OnInit {
             }
             j--;
           }
-          console.log(this.popuLike);
           });
         }   
       });
