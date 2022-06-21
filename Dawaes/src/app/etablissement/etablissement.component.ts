@@ -38,6 +38,16 @@ export class EtablissementComponent implements OnInit {
       const user = auth.currentUser;
       const q = query(likeCollection, where("User", "==", user?.email), where("Etablissement", "==", mail));
       const querySnapshot = await getDocs(q);
+      if(querySnapshot.empty){
+        if (user !== null) {
+          const docRef = await addDoc(collection(this.injector.get('A'), "like"), {
+            isLiked: true,
+            User: user.email,
+            Etablissement: mail
+          });
+        console.log("Document written with ID: ", docRef.id);
+        }
+      }
       querySnapshot.forEach(async (doc) => {
         const data = doc.data();
         if(data['isLiked']==true) {
@@ -50,16 +60,6 @@ export class EtablissementComponent implements OnInit {
             isLiked: true
           });
           this.change();
-        }
-        if(querySnapshot.empty){
-          if (user !== null) {
-            const docRef = await addDoc(collection(this.injector.get('A'), "like"), {
-              isLiked: true,
-              User: user.email,
-              Etablissement: mail
-            });
-          console.log("Document written with ID: ", docRef.id);
-          }
         }
       });
     } catch (e) {
