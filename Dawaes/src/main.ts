@@ -11,8 +11,7 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
-/*ANCHOR 
-sync calendar
-afficher etablissement correctement
-barre de recherche
+/*ANCHOR si t'a le temps
+calendar
+affichage like
 */

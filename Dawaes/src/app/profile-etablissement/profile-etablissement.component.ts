@@ -50,7 +50,6 @@ export class ProfileEtablissementComponent implements OnInit {
           text: comment,
           User: user.email,
           Etablissement: this.etablMail
-          //ANCHOR maybe add rating
         });
       console.log("Document written with ID: ", docRef.id);
       }
@@ -58,5 +57,4 @@ export class ProfileEtablissementComponent implements OnInit {
       console.error("Error adding document: ", e);
     }
   }
-
 }

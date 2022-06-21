@@ -4,6 +4,7 @@ import { Etablissement } from '../class/Etablissment';
 import { getAuth } from 'firebase/auth';
 import { query, collection, where, onSnapshot } from 'firebase/firestore';
 import { FirebaseService } from '../services/firebase.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-etablissements',
@@ -18,16 +19,16 @@ export class ListeEtablissementsComponent implements OnInit {
   popuLike:number[] = [0,0,0,0,0]
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(private service:ObtainEtablissementListService, public firebaseService:FirebaseService, private injector: Injector) {
+  constructor(private service:ObtainEtablissementListService, public firebaseService:FirebaseService, private injector: Injector,private router: Router, private _Activatedroute:ActivatedRoute) {
     const db = this.injector.get('A');
     const auth = getAuth()
     const user = auth.currentUser;
-    if (user != null) {
+    if (user != null && this.router.url!="/search") {
       const q = query(collection(db, "like"), where("User", "==", user?.email));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         this.updateArray();
       });
-    }else{
+    }else if(this.router.url!="/search"){
       this.updateArray();
     }
   }
@@ -97,4 +98,6 @@ export class ListeEtablissementsComponent implements OnInit {
       });
     });
   }
+
+
 }

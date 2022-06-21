@@ -30,7 +30,6 @@ export class UpdateEtablissementComponent implements OnInit {
 
   async updateInstitution(nom:string, localisation:string, type:string, tel:string, description:string){
     try {
-      //ANCHOR image
       const auth = getAuth();
       const user = auth.currentUser;
       const likeCollection= collection(this.injector.get('A'), "Institution");

@@ -1,13 +1,12 @@
 
 <div class="input-group mb-3">
-    <input type="text" class="form-control" aria-label="Text input with dropdown button" [ngClass]="['bg']" placeholder="rechercher...">
-    <select class="form-select" id="inputGroupSelect01" [ngClass]="['bg']">
-        <option selected>Nom</option>
-        <option value="1">Ville</option>
-        <option value="2">Pays</option>
-        <option value="3">Prix</option>
+    <input type="text" class="form-control" aria-label="Text input with dropdown button" [ngClass]="['bg']" placeholder="rechercher..." #search>
+    <select class="form-select" id="inputGroupSelect01" [ngClass]="['bg']" #category>
+        <option selected value="0">Nom</option>
+        <option value="1">Localisation</option>
+        <option value="2">Type</option>
     </select>
-    <button type="button" class="btn" [routerLink]="'/search'" [ngClass]="['crimsonButton']">recherche</button>
+    <button type="button" class="btn" [routerLink]="'/search'" [ngClass]="['crimsonButton']" (click)="findByParam(category.value ,search.value)">recherche</button>
   </div>
   <div class="btn-group" *ngIf="this.login == true">
     <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="['/etablissement',this.mail]">Mon établissement</button>
