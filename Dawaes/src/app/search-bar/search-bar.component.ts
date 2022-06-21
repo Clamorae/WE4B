@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { FirebaseService } from './../services/firebase.service';
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 import { getAuth, signOut,onAuthStateChanged } from 'firebase/auth';

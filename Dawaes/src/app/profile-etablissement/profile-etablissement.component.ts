@@ -14,16 +14,24 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileEtablissementComponent implements OnInit {
 
   etablissement!:Etablissement
-  etablMail!:string
+  public etablMail!:string
   login:boolean
+  public userEmail:string|null|undefined
 
   @Output() isLogout = new EventEmitter<void>()
   constructor(private _Activatedroute:ActivatedRoute, service: ObtainEtablissementService, public firebaseService:FirebaseService, private injector: Injector) {
+    const auth = getAuth()
+    const user = auth.currentUser;
+    this.userEmail=user?.email
+
+
     this._Activatedroute.paramMap.subscribe(params => { 
       this.etablMail = params.get('email')||'0'; 
       this.updateScreen();
     });
-    this.login=true;
+
+    
+    this.login=firebaseService.isLoggedIn;
   }
 
   ngOnInit(): void {
