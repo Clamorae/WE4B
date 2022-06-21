@@ -52,6 +52,7 @@ export class SearchBarComponent implements OnInit {
     }).catch((error) => {
       console.log("not signed out")
     });
+    window.location.reload()
   }
 
   findByParam(cat:string,val:string):void{

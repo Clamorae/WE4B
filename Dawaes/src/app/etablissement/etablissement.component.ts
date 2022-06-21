@@ -1,3 +1,4 @@
+import { Router,Event,NavigationStart } from '@angular/router';
 import { Component, OnInit, Input, EventEmitter, Output, Injector } from '@angular/core';
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
@@ -18,13 +19,25 @@ export class EtablissementComponent implements OnInit {
   login!:boolean
 
   @Output() isLogout = new EventEmitter<void>()
-  constructor(public firebaseService:FirebaseService, private injector: Injector) {
+  constructor(public firebaseService:FirebaseService, private injector: Injector,private router:Router) {
     const db = this.injector.get('A');
+
+    this.login=firebaseService.isLoggedIn;
+
+    this.router.events.subscribe((event: Event) =>{
+      if (event instanceof NavigationStart) {
+        this.login=firebaseService.isLoggedIn;
+        const auth = getAuth()
+        const user = auth.currentUser;
+        if(user==null){
+          this.login=false
+        }
+      }
+    })
   }
 
   ngOnInit(): void {
     this.estAime=true
-    this.login=true
   }
 
   change(){
