@@ -1,3 +1,4 @@
+import { SearchListComponent } from './search-list/search-list.component';
 import { CreateAccountFormComponent } from './create-account-form/create-account-form.component';
 import { ProfileUtilisateurComponent } from './profile-utilisateur/profile-utilisateur.component';
 import { ListeEtablissementsComponent } from './liste-etablissements/liste-etablissements.component';
@@ -11,13 +12,13 @@ const routes: Routes = [
   {path:'', component: LoginFormComponent},
   {path:'newaccount', component: CreateAccountFormComponent},
   {path:'etablissement/:email', component: ProfileEtablissementComponent},
-  {path:'search',component:ListeEtablissementsComponent},
+  {path:'search',component:SearchListComponent},
   {path:'utilisateur',component:ProfileUtilisateurComponent},
   {path: 'update', component:UpdateEtablissementComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

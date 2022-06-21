@@ -31,14 +31,6 @@ export class ListeEtablissementsComponent implements OnInit {
     }else if(this.router.url!="/search"){
       this.updateArray();
     }
-
-      /*this.router.events.subscribe((event: Event) =>{
-      if (event instanceof NavigationEnd) {
-        if(event.url=="/search"){
-          this.updateArray()
-        }
-      }
-    })*/
   }
  
   ngOnInit(): void {

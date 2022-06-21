@@ -28,6 +28,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { UpdateEtablissementComponent } from './update-etablissement/update-etablissement.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchListComponent } from './search-list/search-list.component';
 
 // 2. Add your credentials from step 1
 const config = {
@@ -56,7 +57,8 @@ const db = getFirestore(app);
     ProfileUtilisateurComponent,
     CreateAccountFormComponent,
     SearchBarComponent,
-    UpdateEtablissementComponent
+    UpdateEtablissementComponent,
+    SearchListComponent
   ],
   imports: [
     BrowserModule,

@@ -55,12 +55,13 @@ export class SearchBarComponent implements OnInit {
   }
 
   findByParam(cat:string,val:string):void{
+    this.etablissement=[]
     switch(cat){
       case "0": cat="Nom"
       break;
       case "1":cat="Localisation"
       break;
-      case "2":cat="Type"
+      case "2":cat="tipe"
       break;
     }
     const auth = getAuth()
@@ -72,8 +73,6 @@ export class SearchBarComponent implements OnInit {
             this.etablissement.push(new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail']));
           });
         });
-        this.etablissement.push(new Etablissement("search","should","be","working","wtf","is wrong"))
-        //window.alert(this.etablissement[0].name)
         this.service.setList(this.etablissement)
   }
 
