@@ -44,7 +44,7 @@ export class ProfileEtablissementComponent implements OnInit {
     const observable = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        this.etablissement = new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail']);
+        this.etablissement = new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail'],true);
       });
     });
   }

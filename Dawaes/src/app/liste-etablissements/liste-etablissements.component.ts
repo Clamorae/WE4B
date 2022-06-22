@@ -53,7 +53,7 @@ export class ListeEtablissementsComponent implements OnInit {
           const observable2 = onSnapshot(q2, (querySnapshot2) => {
             querySnapshot2.forEach((doc2) => {
               const data2 = doc2.data();
-              this.etablissements.push(new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail']));
+              this.etablissements.push(new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail'],data2['isLiked']));
             });
           });
         }
@@ -65,7 +65,7 @@ export class ListeEtablissementsComponent implements OnInit {
           const observable2 = onSnapshot(q2, (querySnapshot2) => {
             if (querySnapshot2.size > this.popuLike[0]){
               this.popuLike[0]=querySnapshot2.size;
-              this.popular[0]=new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail']);
+              this.popular[0]=new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail'],true);
               for (let i = 0; i < this.popuLike.length; i++) {
                 let change = false;
                 for (let j = 0; j < this.popuLike.length - 1; j++) {

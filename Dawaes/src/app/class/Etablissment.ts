@@ -8,6 +8,7 @@ export class Etablissement {
         public type: string,
         public desc: string,
         public mail: string,
+        public isLikedByUser:boolean,
     ) {
         //this.img = img;
         this.name = name;
@@ -16,5 +17,6 @@ export class Etablissement {
         this.type = type;
         this.desc = desc;
         this.mail = mail;
+        this.isLikedByUser = isLikedByUser;
     }
 }
