@@ -47,7 +47,6 @@ export class ProfileEtablissementComponent implements OnInit {
       if(user!=null){ 
         const q2 = query(collection(this.injector.get('A'), "like"), where("Etablissement", "==", this.etablMail), where("User", "==",user?.email), where("isLiked", "==", true));
         const observable2 = onSnapshot(q2, (querySnapshot2) => {
-          console.log(user?.email);
           if(querySnapshot2.size==0){          
             this.etablissement = new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail'],false);
           }else{

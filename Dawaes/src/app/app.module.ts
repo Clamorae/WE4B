@@ -13,7 +13,6 @@ import { EtablissementComponent } from './etablissement/etablissement.component'
 import { ListeEtablissementsComponent } from './liste-etablissements/liste-etablissements.component';
 
 import {getFirestore} from 'firebase/firestore';
-import { LogzoneComponent } from './logzone/logzone.component'
 import { initializeApp } from 'firebase/app';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -49,7 +48,6 @@ const db = getFirestore(app);
     AppComponent,
     EtablissementComponent,
     ListeEtablissementsComponent,
-    LogzoneComponent, 
     OneWeekCalendarComponent,
     ListeCommentairesComponent,
     ProfileEtablissementComponent,
