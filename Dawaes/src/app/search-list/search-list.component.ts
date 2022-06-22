@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './search-list.component.html',
   styleUrls: ['./search-list.component.css']
 })
+
+//similar to a etablissement-list but uses the ObtainEtablissementList service and refreshes differently
 export class SearchListComponent implements OnInit {
 
   etablissements : Etablissement[]=[]

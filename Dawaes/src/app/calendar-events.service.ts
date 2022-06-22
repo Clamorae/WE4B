@@ -10,6 +10,7 @@ import { debug } from 'console';
   providedIn: 'root'
 })
 export class CalendarEventsService {
+  //not used in the final project but left for showcase
 
   toReturn:CalendarEvent[]=[]
 

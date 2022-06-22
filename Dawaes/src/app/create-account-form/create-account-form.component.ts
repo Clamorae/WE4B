@@ -40,6 +40,7 @@ export class CreateAccountFormComponent implements OnInit {
     }
   }
 
+  //google function was removed because the sign up caused issues with our database model, code was left for showcase
   /*async onGoogle(){
     const provider = new GoogleAuthProvider();
     const auth = getAuth();

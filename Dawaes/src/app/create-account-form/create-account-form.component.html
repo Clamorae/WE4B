@@ -12,6 +12,7 @@
       <input type="checkbox" class="form-check-input" id="exampleCheck1" #check>
       <label class="form-check-label" for="exampleCheck1" >Je suis chef d'établissement</label>
     </div>
+    <!--warnings depending on the case-->
     <div *ngIf="this.attempted" [ngClass]="['warning']">
       Echec de la création de compte!
     </div>

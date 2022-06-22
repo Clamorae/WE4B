@@ -5,6 +5,7 @@ import { isThursday } from 'date-fns';
 @Injectable({
   providedIn: 'root'
 })
+//centralizes the globally most used firebase functions of the project
 export class FirebaseService {
   
   isLoggedIn = false

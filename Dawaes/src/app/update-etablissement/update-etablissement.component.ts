@@ -21,6 +21,7 @@ export class UpdateEtablissementComponent implements OnInit {
     this.userEmail=user?.email
   }
 
+  //check if the user is logged and if not denies the access
   @HostListener('window:load')
   onLoad() {
     const auth = getAuth()

@@ -36,6 +36,7 @@ export class ListeEtablissementsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //gets the different institutions and orders them depending on the component instance
   updateArray(){
     const auth = getAuth()
     const user = auth.currentUser;

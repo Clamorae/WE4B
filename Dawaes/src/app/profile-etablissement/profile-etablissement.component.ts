@@ -36,6 +36,7 @@ export class ProfileEtablissementComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //updates the displayed element on url parameter changes
   updateScreen(){
     const auth = getAuth()
     const user = auth.currentUser;

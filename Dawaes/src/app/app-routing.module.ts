@@ -18,6 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  //for the search page update, onSameUrlNavigation must be set on reload
   imports: [RouterModule.forRoot(routes,{ onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
 })

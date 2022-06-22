@@ -8,6 +8,7 @@
     <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
     <input type="password" class="form-control" id="exampleInputPassword1" #password formControlName="mdp">
   </div>
+  <!--warnings depending on the situations-->
   <div *ngIf="this.attempted" [ngClass]="['warning']">
     Email et/ou mot de passe invalide(s)!
   </div>

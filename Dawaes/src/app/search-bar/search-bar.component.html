@@ -10,6 +10,7 @@
     </select>
     <button type="button" class="btn" [routerLink]="'/search'" [ngClass]="['crimsonButton']" (click)="findByParam(category.value ,search.value)">recherche</button>
   </div>
+  <!--useful buttons to improve the user experience-->
   <div class="btn-group" *ngIf="this.login == true;else elseBlock">
     <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="['/etablissement',this.mail]">Mon établissement</button>
     <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="'/utilisateur'">Mon profil</button>

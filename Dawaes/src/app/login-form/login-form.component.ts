@@ -33,7 +33,6 @@ export class LoginFormComponent implements OnInit {
 
   async onSignUp(email:string, password:string,event:Event): Promise<void>{
     this.attempted=true
-    //window.alert("ok")
 
     //if this check fails, nothing happens and the user stays on the login page
     await  this.firebaseService.signIn(email,password);
@@ -44,6 +43,7 @@ export class LoginFormComponent implements OnInit {
     
   }
 
+  //google function was removed because the sign up caused issues with our database model, code was left for showcase
   /*async onGoogle(){
     const provider = new GoogleAuthProvider();
     const auth = getAuth();

@@ -1,6 +1,7 @@
 <div id="mainContainer">
   <h2 *ngIf="this.titre != undefined" [ngClass]="['center']">{{this.titre}}</h2>
   <ul class="list-group list-group-flush">
+    <!--displays all elements from the etablissements array-->
       <li class="list-group-item"><app-etablissement *ngFor="let etablissementVar of etablissements"  [etablissement]="etablissementVar"></app-etablissement></li>
   </ul>
 </div>

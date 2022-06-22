@@ -44,6 +44,7 @@ export class EtablissementComponent implements OnInit {
     this.estAime=!this.estAime
   }
 
+  //changes the like state
   async like(mail:string){
     try {
       const likeCollection= collection(this.injector.get('A'), "like");

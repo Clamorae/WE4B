@@ -1,6 +1,7 @@
 <div [ngClass]="['bg']">
   <h2 *ngIf="this.titre != undefined" [ngClass]="['center']">{{this.titre}}</h2>
   <ul class="list-group list-group-flush" [ngClass]="['bg']">
+    <!--displays all elements form the comment array-->
       <li class="list-group-item" *ngFor="let commVar of comment" [ngClass]="['bg']">{{commVar}}</li>
   </ul>
 </div>

@@ -31,6 +31,7 @@ export class ListeCommentairesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //refreshes the comment list when a new comment is added
   updateComment():void{
     const auth = getAuth()
     const user = auth.currentUser;

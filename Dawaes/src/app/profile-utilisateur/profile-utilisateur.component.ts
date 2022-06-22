@@ -20,6 +20,7 @@ export class ProfileUtilisateurComponent implements OnInit {
     const db = this.injector.get('A');
   }
 
+  //check if the user is logged and if not denies the access
   @HostListener('window:load')
   onLoad() {
     const auth = getAuth()

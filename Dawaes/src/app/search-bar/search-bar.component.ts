@@ -5,7 +5,6 @@ import { FirebaseService } from './../services/firebase.service';
 import { Component, EventEmitter, Injector, OnInit, Output } from '@angular/core';
 import { getAuth, signOut,onAuthStateChanged } from 'firebase/auth';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
-import { Etablissement } from '../class/Etablissment';
 
 @Component({
   selector: 'app-search-bar',
@@ -16,7 +15,6 @@ export class SearchBarComponent implements OnInit {
 
   public login!:boolean
   public mail:string|null
-  public etablissement: Etablissement[] = []
   public isMenu!:boolean
 
   @Output() isLogout = new EventEmitter<void>()
@@ -55,6 +53,7 @@ export class SearchBarComponent implements OnInit {
     window.location.reload()
   }
 
+  //calls upon the service setter and transmits the search parameters
   findByParam(cat:string,val:string):void{
         this.service.setList(cat,val)
   }
