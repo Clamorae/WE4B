@@ -14,6 +14,7 @@ import { FirebaseService } from '../services/firebase.service';
 export class EtablissementComponent implements OnInit {
 
   @Input() etablissement!:Etablissement //< établissement contenu dans le composant
+  @Input() isPopu!:boolean
   //attributs supplémentaires:
   estAime!:boolean
   login!:boolean

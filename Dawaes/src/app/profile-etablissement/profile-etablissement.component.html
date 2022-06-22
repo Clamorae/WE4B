@@ -3,7 +3,7 @@
     <div class="btn-group" *ngIf="this.login == true && this.userEmail==this.etablMail">
         <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="'/update'">Editer</button>
     </div>
-    <app-etablissement [etablissement]="this.etablissement"></app-etablissement>
+    <app-etablissement [etablissement]="this.etablissement" [isPopu]="false"></app-etablissement>
     <br>
     <!---Unfortunately, the calendar had to be removed because it was too inconsistent to be properly integrated (issues happened because of the response time of firebase). Code for it was left as a showcase of our work.
     <app-one-week-calendar></app-one-week-calendar>-->
