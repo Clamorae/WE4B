@@ -16,6 +16,7 @@ export class SearchBarComponent implements OnInit {
   public login!:boolean
   public mail:string|null
   public isMenu!:boolean
+  public isOwner! : boolean
 
   @Output() isLogout = new EventEmitter<void>()
   constructor(public firebaseService:FirebaseService, private injector: Injector,private activatedRoute:ActivatedRoute,private router:Router,public service:ObtainEtablissementListService) {
@@ -27,6 +28,7 @@ export class SearchBarComponent implements OnInit {
       if (user) {
         this.login=true
         this.mail=user?.email
+        this.getIsOwner();
       } else {
         this.login=false
         this.mail=""
@@ -41,6 +43,21 @@ export class SearchBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  getIsOwner(){
+    this.isOwner = false;
+    const q = query(collection(this.injector.get('A'), "User"), where("Mail", "==", this.mail));
+    const observable = onSnapshot(q, (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data['isOwner']==true) {
+          this.isOwner = true;
+        }else{
+          this.isOwner = false;
+        }
+      });
+    });
   }
 
   signOut():void{

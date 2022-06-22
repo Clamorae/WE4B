@@ -4,6 +4,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { FirebaseService } from '../services/firebase.service';
 
 import { FormControl, FormGroup,Validators } from '@angular/forms';
+import { addDoc, collection } from 'firebase/firestore';
 
 @Component({
   selector: 'app-create-account-form',
@@ -29,13 +30,25 @@ export class CreateAccountFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onSignIn(email:string, password:string): Promise<void>{
+  async onSignIn(email:string, password:string, checked:boolean): Promise<void>{
     this.attempted=true
 
     //if this check fails, nothing happens and the user stays on the create account page
     await  this.firebaseService.signUp(email,password);
     if(this.firebaseService.isLoggedIn){
-      console.log("connected");
+      try {
+        const auth = getAuth()
+        const user = auth.currentUser;
+        if (user !== null) {
+          const docRef = await addDoc(collection(this.injector.get('A'), "User"), {
+            Mail: user.email,
+            isOwner: checked
+          });
+        console.log("Document written with ID: ", docRef.id);
+        }
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
       this.router.navigateByUrl("/utilisateur")
     }
   }

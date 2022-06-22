@@ -37,7 +37,6 @@ export class LoginFormComponent implements OnInit {
     //if this check fails, nothing happens and the user stays on the login page
     await  this.firebaseService.signIn(email,password);
     if(this.firebaseService.isLoggedIn){
-      console.log("connected");
       this.router.navigateByUrl("/utilisateur")
     } 
     

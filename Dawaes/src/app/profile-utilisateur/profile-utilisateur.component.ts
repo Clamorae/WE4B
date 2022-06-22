@@ -26,7 +26,7 @@ export class ProfileUtilisateurComponent implements OnInit {
     const auth = getAuth()
     const user = auth.currentUser;
     if(user==null){
-      this.router.navigateByUrl("")
+      this.router.navigateByUrl("/search")
     }
   }
 

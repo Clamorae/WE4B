@@ -19,6 +19,6 @@
     <div *ngIf="!myForm.valid && myForm.touched" [ngClass]="['warning']">
       Formulaire invalide! Merci de rentrer une adresse email valide et un mot de passe d'au moins 8 caractères!
     </div>
-    <button class="btn " (click)="onSignIn(email.value,password.value)" [ngClass]="['redButton']" [disabled]='!myForm.valid'>Envoyer</button><br>
+    <button class="btn " (click)="onSignIn(email.value,password.value, check.checked)" [ngClass]="['redButton']" [disabled]='!myForm.valid'>Envoyer</button><br>
     <!--<button (click) = "onGoogle()" [ngClass]="['login-with-google-btn']">S'inscrire avec google</button> -->
 </form>
