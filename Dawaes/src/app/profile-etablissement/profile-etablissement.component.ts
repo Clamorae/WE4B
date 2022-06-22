@@ -43,8 +43,19 @@ export class ProfileEtablissementComponent implements OnInit {
     const q = query(collection(this.injector.get('A'), "Institution"), where("Mail", "==", this.etablMail));
     const observable = onSnapshot(q, (querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        this.etablissement = new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail'],true);
+      const data = doc.data();
+      if(user!=null){ 
+        const q2 = query(collection(this.injector.get('A'), "like"), where("Mail", "==", this.etablMail), where("User", "==",user?.email), where("isLiked", "==", true));
+        const observable2 = onSnapshot(q2, (querySnapshot2) => {
+          if(querySnapshot2.size==0){          
+            this.etablissement = new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail'],false);
+          }else{
+            this.etablissement = new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail'],true);
+          }
+        });
+      }else{
+        this.etablissement = new Etablissement(data['Nom'],data['Localisation'],data['Phone'],data['tipe'],data['Description'],data['Mail'],false);
+      }
       });
     });
   }

@@ -10,7 +10,9 @@ export class ObtainEtablissementListService {
 
   etablissement:Etablissement[]=[]
 
-  constructor(private injector:Injector) { }
+  constructor(private injector:Injector){
+
+  }
 
   //setter
   setList(cat:string,val:string){
