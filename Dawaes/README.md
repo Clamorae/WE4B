@@ -5,6 +5,8 @@
 Project for the WE4B course: an attempt at creating a website for traveling reservations (like Trivago).
 By TROMBINI Quentin and RAMOS Jules.
 
+You can find the github at https://github.com/Clamorae/WE4B
+
 ## Required installs:
 
 `npm install firebase @angular/fire` for firebase
