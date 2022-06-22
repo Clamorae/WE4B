@@ -4,7 +4,7 @@
       <a class="card-title" [routerLink]="['/etablissement',etablissement.mail]"><h5>{{etablissement.name}}</h5></a>
 
       <!--like button-->
-      <div *ngIf="login">
+      <div *ngIf="login && !isPopu">
         <button [ngClass]="['like']" class="btn" (click)="like(etablissement.mail)" *ngIf="etablissement.isLikedByUser;else elseBlock"><img src="../../assets/red_heart.png" alt="unlike" width="50" height="50"><p>Ne plus aimer</p></button>
         <ng-template #elseBlock > <button [ngClass]="['like']" class="btn" (click)="like(etablissement.mail)" ><img src="../../assets/heart_black.png" alt="like" width="50" height="50"><p>Aimer</p></button></ng-template>
         <p></p>
