@@ -13,7 +13,7 @@
   <div class="btn-group" *ngIf="this.login == true;else elseBlock">
     <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="['/etablissement',this.mail]">Mon établissement</button>
     <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="'/utilisateur'">Mon profil</button>
-    <button type="button" class="btn" [ngClass]="['crimsonButton']" [routerLink]="''" (click)="signOut()">Déconnexion</button>
+    <button type="button" class="btn" [ngClass]="['crimsonButton']" (click)="signOut()">Déconnexion</button>
 </div>
 <ng-template #elseBlock>
     <div class="btn-group" >
