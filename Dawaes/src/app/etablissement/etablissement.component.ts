@@ -15,7 +15,6 @@ export class EtablissementComponent implements OnInit {
 
   @Input() etablissement!:Etablissement //< établissement contenu dans le composant
   //attributs supplémentaires:
-  estAime!:boolean
   login!:boolean
 
   @Output() isLogout = new EventEmitter<void>()
@@ -37,16 +36,16 @@ export class EtablissementComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.estAime=true
   }
 
   change(){
-    this.estAime=!this.estAime
+    this.etablissement.isLikedByUser = !this.etablissement.isLikedByUser;
   }
 
   //changes the like state
   async like(mail:string){
     try {
+      this.change();
       const likeCollection= collection(this.injector.get('A'), "like");
       const auth = getAuth()
       const user = auth.currentUser;
@@ -68,12 +67,10 @@ export class EtablissementComponent implements OnInit {
           updateDoc(doc.ref,{
             isLiked: false
           });
-          this.change();
         }else if(data['isLiked']==false) {
           updateDoc(doc.ref,{
             isLiked: true
           });
-          this.change();
         }
       });
     } catch (e) {
